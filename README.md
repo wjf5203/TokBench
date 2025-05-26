@@ -10,7 +10,7 @@
 
 <a href="https://arxiv.org/abs/2505.18142"><img src='https://img.shields.io/badge/arXiv-TokBench-red' alt='Paper PDF'></a> <a href="https://wjf5203.github.io/TokBench/"><img src='https://img.shields.io/badge/Project_Page-TokBench-green' alt='Project Page'></a> <a href="https://huggingface.co/datasets/Junfeng5/TokBench"><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue'></a>
 
-👋 **Welcome to TokBench！**TokBench is an benchmark specifically designed for visual Tokenizers and VAEs, focusing on text and face quality in image reconstruction. It provides a rich collection of text- and face-centric images and videos, as these fine-grained details determine the upper bound of visual generation models. TokBench conducts extensive evaluations of existing image and video Tokenizers/VAEs, **serving as a guide for selecting VAE/Tokenizers**. Refer to the  [project page](https://wjf5203.github.io/TokBench/)  for more details.
+👋 **Welcome to TokBench** TokBench is an benchmark specifically designed for visual Tokenizers and VAEs, focusing on text and face quality in image reconstruction. It provides a rich collection of text- and face-centric images and videos, as these fine-grained details determine the upper bound of visual generation models. TokBench conducts extensive evaluations of existing image and video Tokenizers/VAEs, **serving as a guide for selecting VAE/Tokenizers**. Refer to the  [project page](https://wjf5203.github.io/TokBench/)  for more details.
 
 
 
@@ -33,7 +33,7 @@ Visual tokenizers and VAEs have significantly advanced visual generation and mul
 
 
 
-## 🎉 **Comparison with Previous Metrics **
+## 🎉 **Comparison with Previous Metrics**
 
 Our research found that commonly used metrics like rFID, LPIPS, and PSNR are not sensitive enough to evaluate text and face reconstruction quality. These metrics primarily focus on semantic distribution and global image information, sometimes producing judgments that contradict human perception when assessing text and face reconstruction results.
 
