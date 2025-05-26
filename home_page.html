@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> TokBench </title>
+  <link rel="icon" href="./static/images/logo.jpg">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/leaderboard.css">
+  <link rel="stylesheet" href="./static/css/video-player.css">
+
+  <!-- <link href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bulma.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script> -->
+  <script type="text/javascript" src="static/js/sort-table.js" defer></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/explorer-index.js"></script>
+  <script src="./static/js/question_card.js"></script>
+
+  <script src="./static/js/leaderboard_testmini.js"></script>  
+  <script src="./data/results/output_folders.js" defer></script>
+  <script src="./data/results/model_scores.js" defer></script>
+
+  <script src="./visualizer/data/data_public.js" defer></script>
+
+  <style>
+    .no-sort {
+        cursor: default;
+        pointer-events: none;
+        background-image: none !important; /* Remove the sort arrow */
+    }
+  </style>
+
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <p style="font-size:18px; display: inline; margin-right: -2px; margin-top: 12px;">🔥</p>
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://github.com/FoundationVision/UniTok">
+            <b>UniTok</b> 
+          </a>
+          <a class="navbar-item" href="https://github.com/FoundationVision/Liquid">
+            <b>Liquid</b> 
+          </a>
+          <a class="navbar-item" href="https://github.com/Yuliang-Liu/Monkey">
+            <b>TextMonkey</b> 
+          </a>
+          <a class="navbar-item" href="https://github.com/Yuliang-Liu/Monkey">
+            <b>Mini-Monkey</b> 
+          </a>
+          <a class="navbar-item" href="https://github.com/Yuliang-Liu/Monkey">
+            <b>Monkey</b> 
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title is-bold">
+            <img src="static/images/logo.jpg" style="width:1.8em;vertical-align: middle" alt="Logo"/>
+            <span class="tokbench" style="vertical-align: middle;text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)">TokBench</span>
+            </h1>
+          <h2 class="subtitle is-3 publication-subtitle ", style="width: 100%;margin-bottom: 20px;">
+            <strong>Evaluating Your Visual Tokenizer before Visual Generation</strong>
+          </h2>
+          
+          <div class="is-size-5 publication-authors", style="width: 100%; margin: 15px auto;", >
+            <span class="author-block"><a href="https://wjf5203.github.io/">Junfeng Wu</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Dongliang_Luo2">Dongliang Luo></a>,</span>   
+            <span class="author-block"><a href="https://weizhi-zhao.github.io/">Weizhi Zhao</a>,</span>
+            <span class="author-block">Zhihao Xie,</span>   
+            <span class="author-block">Yuanhao Wang,</span>
+            <span class="author-block"><a href="https://github.com/ProvenceStar">Junyi Li</a>,</span>
+            <span class="author-block"><a href="https://www.researchgate.net/profile/Xie-Xudong">Xudong Xie</a>,</span>  
+            <span class="author-block"><a href="http://faculty.hust.edu.cn/liuyuliang/zh_CN/index.htm">Yuliang Liu</a>,</span>
+            <span class="author-block"><a href="http://vlrlab.aia.hust.edu.cn/">Xiang Bai</a><sup><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>†</mo></math></sup></span>
+        </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Huazhong University of Science and Technology</span>
+            <!-- <br><span class="paper-block"><b style="color:#f41c1c">Submitted to NeurIPS 2025 Dataset & Benchmark Track</b></span> -->
+            <!-- <span class="paper-block"><b style="color:#f41c1c">ICLR 2024 Oral</b> (85 in 7304, 1.2%)</span> -->
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/xxxx.xxxx"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/xxxx.xxxx"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/yfzhang114/MME-RealWorld"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/Junfeng5/TokBench"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <!-- <i class="far fa-huggingface"></i> -->
+                      <p style="font-size:18px">🤗</p>
+                  </span>
+                  <span>Dataset</span>
+                </a>
+              </span>
+              <!-- Leaderboard Link. -->
+              <span class="link-block">
+                <a href="#leaderboard"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <p style="font-size:18px">🏆</p>
+                  </span>
+                  <span>Leaderboard</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/TokBench.jpg"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+      <h2 class="subtitle has-text-centered">
+        <figcaption style="font-size: 14px;text-align: left;">
+          TokBench features a balanced instance-scale distribution with particular emphasis on small-scale face and text instances, presenting signifi-cant challenges for existing visual reconstruction approaches.
+         </figcaption>
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="margin-bottom: 2vh;">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="margin-top: -5%;">Overview</h2>
+        <div class="content has-text-justified">
+          <p style="font-size: 20px;">
+            In this work, we reveal the limitations of visual tokenizers and VAEs in preserving fine-grained features, and propose a benchmark to evaluate reconstruction performance for two challenging visual contents: text and face. Visual tokenizers and VAEs have significantly advanced visual generation and multimodal modeling by providing more efficient compressed or quantized image representations. However, while helping production models reduce computational burdens, the information loss from image compression fundamentally limits the upper bound of visual generation quality. To evaluate this upper bound, we focus on assessing reconstructed text and facial features since they typically: 1) exist at smaller scales, 2) contain dense and rich textures, 3) are prone to collapse, and 4) are highly sensitive to human vision. We first collect and curate a diverse set of clear text and face images from existing datasets. Unlike approaches using VLM models, we employ established OCR and face recognition models for evaluation, ensuring accuracy while maintaining an exceptionally lightweight assessment process <span style="font-weight: bold; color: rgb(214, 21, 21);">requiring just 2GB memory and 4 minutes</span> to complete. Using our benchmark, we analyze text and face reconstruction quality across various scales for different image tokenizers and VAEs. Our results show modern visual tokenizers still struggle to preserve fine-grained features, especially at smaller scales. We further extend this evaluation framework to video, conducting comprehensive analysis of video tokenizers. Additionally, we demonstrate that traditional metrics fail to accurately reflect reconstruction performance for faces and text, while our proposed metrics serve as an effective complement.
+          </p>
+          <p style="font-size: 20px;">
+            The dataset is available at 
+            <a href="https://huggingface.co/datasets/Junfeng5/TokBench" style="color:#ed4b82; text-decoration: none;">
+                https://huggingface.co/datasets/Junfeng5/TokBench
+            </a>.
+        </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+</div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    updateRowNumbers();
+    document.querySelector("#results").addEventListener("click", updateRowNumbers);
+  });
+
+  function updateRowNumbers() {
+    const rows = document.querySelectorAll("#results tbody tr");
+    rows.forEach((row, index) => {
+      row.querySelector("td").innerText = index + 1;
+    });
+  }
+</script>
+
+<section class="section">
+  <div class="container">
+    
+    <div class="columns is-centered">
+      <div class="column is-full has-text-centered content">
+
+        <h2 class="title is-3" id="leaderboard" style="margin-top: -5%;"> TokBench Leaderboard</h2>
+        <div class="content">
+          <p class="mt-3">
+            <span style="font-weight: bold; color: rgb(213, 33, 33);">Feel free to email us, we'd be happy to assist in incorporating your Tokenizer or VAE results into our leaderboard.</span>.
+          </p>
+          <!-- <div class="video-duration">
+            <p>
+               Ranking Metric, need to be fixed ...
+            </p>
+          </div> -->
+
+          <!-- <table class="js-sort-table" id="results" style="margin-left: auto; margin-right: auto;">
+            <thead>
+              <tr>
+                <th rowspan="3" class="no-sort" style="vertical-align: middle; width: 30px;" data-js-sort-colNum="none"><strong>#</strong></th>
+                <th rowspan="1" class="no-sort" style="vertical-align: middle; width: 215px;" data-js-sort-colNum="none"><strong>Method</strong></th>
+                <th rowspan="1" class="no-sort" style="vertical-align: middle; width: 30px;"><strong>Type</strong></th>
+                <th rowspan="1" class="no-sort" style="vertical-align: middle; width: 100px;"><strong>Date</strong></th>
+                <th colspan="1" style="vertical-align: middle; width: 30 ;font-style: italic" data-js-sort-colNum="4"><strong>Overall</strong></th>
+                <th colspan="4" style="vertical-align: middle; width: 300px;" data-js-sort-colNum="10"><strong>T-ACC↑</strong></th>
+                <th colspan="4" style="vertical-align: middle; width: 280px;" data-js-sort-colNum="16"><strong>T-NED↑</strong></th>
+                <th colspan="4" style="vertical-align: middle; width: 280px;" data-js-sort-colNum="16"><strong>F-Sim↑</strong></th>
+
+              </tr>
+              <tr>
+                <th colspan="3" class="no-sort"><strong>Task Split</strong></th>
+                <th data-js-sort-colNum="4" style="font-style: italic;"><strong>Avg</strong></th>
+                <th data-js-sort-colNum="5"><strong>Small</strong></th>
+                <th data-js-sort-colNum="6"><strong>Medium</strong></th>
+                <th data-js-sort-colNum="7"><strong>Large</strong></th>
+                <th data-js-sort-colNum="8"><strong>Mean</strong></th>
+                <th data-js-sort-colNum="9"><strong>Small</strong></th>
+                <th data-js-sort-colNum="10"><strong>Medium</strong></th>
+                <th data-js-sort-colNum="11"><strong>Large</strong></th>
+                <th data-js-sort-colNum="12"><strong>Mean</strong></th>
+                <th data-js-sort-colNum="13"><strong>Small</strong></th>
+                <th data-js-sort-colNum="14"><strong>Medium</strong></th>
+                <th data-js-sort-colNum="15"><strong>Large</strong></th>
+                <th data-js-sort-colNum="16"><strong>Mean</strong></th>
+
+              </tr>
+            </thead>
+            <thead>
+              <tr>
+                <th colspan="18" class="no-sort" style="font-style: italic;"><strong>Resolution: 256 × 256</strong></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="vertical-align: middle;"></td>
+                <td style="vertical-align: middle; width: 30px;"><b class="">Resize</b></td>
+                <td style="vertical-align: middle;">-</td>
+                <td style="vertical-align: middle;"><b>2025-05-20</b></td>
+                <td style="vertical-align: middle;">96.53/0.82</td>
+                <td style="vertical-align: middle;">86.05</td>
+                <td style="vertical-align: middle;">94.65</td>
+                <td style="vertical-align: middle;">98.37</td>
+                <td style="vertical-align: middle;">93.02</td>
+                <td style="vertical-align: middle;">92.98</td>
+                <td style="vertical-align: middle;">97.22</td>
+                <td style="vertical-align: middle;">99.38</td>
+                <td style="vertical-align: middle;">96.53</td>
+            </tr>
+              <tr>
+                <td style="vertical-align: middle;"></td>
+                <td style="vertical-align: middle; width: 30px;"><b class=""><a href="https://github.com/CompVis/taming-transformers" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                  VQGAN
+                </a></b></td>
+                <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+                <td style="vertical-align: middle;"><b>2025-05-20</b></td>
+                <td style="vertical-align: middle;">8.22/0.0</td>
+                <td style="vertical-align: middle;">0.05</td>
+                <td style="vertical-align: middle;">0.12</td>
+                <td style="vertical-align: middle;">3.14</td>
+                <td style="vertical-align: middle;">1.10</td>
+                <td style="vertical-align: middle;">4.34</td>
+                <td style="vertical-align: middle;">5.33</td>
+                <td style="vertical-align: middle;">15.00</td>
+                <td style="vertical-align: middle;">8.22</td>
+            </tr>
+            </tbody>                                              
+        </table> -->
+        <!-- No Sort Table-->
+          <table id="results" style="margin-left: auto; margin-right: auto;">
+            <thead>
+                <tr>
+                    <th rowspan="3" style="vertical-align: middle; width: 30px;"><strong>#</strong></th>
+                    <th rowspan="1" style="vertical-align: middle; width: 280px; white-space: nowrap;"><strong>Method</strong></th>
+                    <th rowspan="1" style="vertical-align: middle; width: 30px;"><strong>Type</strong></th>
+                    <!-- <th colspan="1" style="vertical-align: middle; width: 30; font-style: italic;"><strong>Overall</strong></th> -->
+                    <th colspan="4" style="vertical-align: middle; width: 300px;"><strong>T-ACC↑</strong></th>
+                    <th colspan="4" style="vertical-align: middle; width: 280px;"><strong>T-NED↑</strong></th>
+                    <th colspan="4" style="vertical-align: middle; width: 280px;"><strong>F-Sim↑</strong></th>
+                </tr>
+                <tr>
+                    <th colspan="2"><strong>Task Split</strong></th>
+                    <!-- <th style="font-style: italic;"><strong>Avg</strong></th> -->
+                    <th><strong>Small</strong></th>
+                    <th><strong>Medium</strong></th>
+                    <th><strong>Large</strong></th>
+                    <th><strong>Mean</strong></th>
+                    <th><strong>Small</strong></th>
+                    <th><strong>Medium</strong></th>
+                    <th><strong>Large</strong></th>
+                    <th><strong>Mean</strong></th>
+                    <th><strong>Small</strong></th>
+                    <th><strong>Medium</strong></th>
+                    <th><strong>Large</strong></th>
+                    <th><strong>Mean</strong></th>
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th colspan="18" style="font-style: italic;"><strong>Resolution: 256 × 256</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="vertical-align: middle;"></td>
+                    <td style="vertical-align: middle; width: 30px;"><b>Resize</b></td>
+                    <td style="vertical-align: middle;">-</td>
+                    <!-- <td style="vertical-align: middle;">96.53/0.82</td> -->
+                    <td style="vertical-align: middle;">86.05</td>
+                    <td style="vertical-align: middle;">94.65</td>
+                    <td style="vertical-align: middle;">98.37</td>
+                    <td style="vertical-align: middle;">93.02</td>
+                    <td style="vertical-align: middle;">92.98</td>
+                    <td style="vertical-align: middle;">97.22</td>
+                    <td style="vertical-align: middle;">99.38</td>
+                    <td style="vertical-align: middle;">96.53</td>
+                    <td style="vertical-align: middle;">0.85</td>
+                    <td style="vertical-align: middle;">0.97</td>
+                    <td style="vertical-align: middle;">0.98</td>
+                    <td style="vertical-align: middle;">0.93</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: middle;"></td>
+                    <td style="vertical-align: middle; width: 30px;">
+                        <b>
+                            <a href="https://github.com/CompVis/taming-transformers" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                                VQGAN
+                            </a>
+                        </b>
+                    </td>
+                    <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+                    <!-- <td style="vertical-align: middle;">-</td> -->
+                    <td style="vertical-align: middle;">0.05</td>
+                    <td style="vertical-align: middle;">0.12</td>
+                    <td style="vertical-align: middle;">3.14</td>
+                    <td style="vertical-align: middle;">1.10</td>
+                    <td style="vertical-align: middle;">4.34</td>
+                    <td style="vertical-align: middle;">5.33</td>
+                    <td style="vertical-align: middle;">15.00</td>
+                    <td style="vertical-align: middle;">8.22</td>
+                    <td style="vertical-align: middle;">0.05</td>
+                    <td style="vertical-align: middle;">0.08</td>
+                    <td style="vertical-align: middle;">0.17</td>
+                    <td style="vertical-align: middle;">0.10</td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: middle;"></td>
+                  <td style="vertical-align: middle; width: 30px;">
+                      <b>
+                          <a href="https://github.com/facebookresearch/chameleon" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                            Chameleon
+                          </a>
+                      </b>
+                  </td>
+                  <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+                  <!-- <td style="vertical-align: middle;">-</td> -->
+                  <td style="vertical-align: middle;">0.11</td>
+                  <td style="vertical-align: middle;">0.31</td>
+                  <td style="vertical-align: middle;">8.19</td>
+                  <td style="vertical-align: middle;">2.87</td>
+                  <td style="vertical-align: middle;">4.67</td>
+                  <td style="vertical-align: middle;">6.65</td>
+                  <td style="vertical-align: middle;">24.91</td>
+                  <td style="vertical-align: middle;">12.08</td>
+                  <td style="vertical-align: middle;">0.08</td>
+                  <td style="vertical-align: middle;">0.15</td>
+                  <td style="vertical-align: middle;">0.30</td>
+                  <td style="vertical-align: middle;">0.18</td>
+              </tr>
+              <tr>
+                <td style="vertical-align: middle;"></td>
+                <td style="vertical-align: middle; width: 30px;">
+                    <b>
+                        <a href="https://github.com/FoundationVision/LlamaGen" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                          LlamaGen
+                        </a>
+                    </b>
+                </td>
+                <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+                <!-- <td style="vertical-align: middle;">-</td> -->
+                <td style="vertical-align: middle;">0.16</td>
+                <td style="vertical-align: middle;">0.44</td>
+                <td style="vertical-align: middle;">12.25</td>
+                <td style="vertical-align: middle;">4.28</td>
+                <td style="vertical-align: middle;">5.41</td>
+                <td style="vertical-align: middle;">7.50</td>
+                <td style="vertical-align: middle;">31.40</td>
+                <td style="vertical-align: middle;">14.77</td>
+                <td style="vertical-align: middle;">0.07</td>
+                <td style="vertical-align: middle;">0.11</td>
+                <td style="vertical-align: middle;">0.26</td>
+                <td style="vertical-align: middle;">0.15</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/FoundationVision/VAR" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        VAR
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">1.24</td>
+              <td style="vertical-align: middle;">6.72</td>
+              <td style="vertical-align: middle;">39.26</td>
+              <td style="vertical-align: middle;">15.74</td>
+              <td style="vertical-align: middle;">10.89</td>
+              <td style="vertical-align: middle;">26.26</td>
+              <td style="vertical-align: middle;">65.42</td>
+              <td style="vertical-align: middle;">34.19</td>
+              <td style="vertical-align: middle;">0.10</td>
+              <td style="vertical-align: middle;">0.20</td>
+              <td style="vertical-align: middle;">0.41</td>
+              <td style="vertical-align: middle;">0.23</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://yucornetto.github.io/projects/titok.html" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        TiTok
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">0.05</td>
+              <td style="vertical-align: middle;">0.06</td>
+              <td style="vertical-align: middle;">0.17</td>
+              <td style="vertical-align: middle;">0.09</td>
+              <td style="vertical-align: middle;">3.04</td>
+              <td style="vertical-align: middle;">4.07</td>
+              <td style="vertical-align: middle;">5.58</td>
+              <td style="vertical-align: middle;">4.23</td>
+              <td style="vertical-align: middle;">0.03</td>
+              <td style="vertical-align: middle;">0.03</td>
+              <td style="vertical-align: middle;">0.05</td>
+              <td style="vertical-align: middle;">0.04</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/apple/ml-flextok" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        FlexTok
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">0.55</td>
+              <td style="vertical-align: middle;">2.24</td>
+              <td style="vertical-align: middle;">18.06</td>
+              <td style="vertical-align: middle;">6.95</td>
+              <td style="vertical-align: middle;">7.80</td>
+              <td style="vertical-align: middle;">14.26</td>
+              <td style="vertical-align: middle;">41.21</td>
+              <td style="vertical-align: middle;">21.09</td>
+              <td style="vertical-align: middle;">0.06</td>
+              <td style="vertical-align: middle;">0.12</td>
+              <td style="vertical-align: middle;">0.25</td>
+              <td style="vertical-align: middle;">0.15</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/markweberdev/maskbit" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        MaskBit
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">0.16</td>
+              <td style="vertical-align: middle;">0.19</td>
+              <td style="vertical-align: middle;">7.26</td>
+              <td style="vertical-align: middle;">2.54</td>
+              <td style="vertical-align: middle;">4.45</td>
+              <td style="vertical-align: middle;">5.72</td>
+              <td style="vertical-align: middle;">22.37</td>
+              <td style="vertical-align: middle;">10.85</td>
+              <td style="vertical-align: middle;">0.06</td>
+              <td style="vertical-align: middle;">0.09</td>
+              <td style="vertical-align: middle;">0.19</td>
+              <td style="vertical-align: middle;">0.11</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/FoundationVision/OmniTokenizer" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        OmniTokenizer
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">2.14</td>
+              <td style="vertical-align: middle;">8.46</td>
+              <td style="vertical-align: middle;">51.28</td>
+              <td style="vertical-align: middle;">20.63</td>
+              <td style="vertical-align: middle;">13.24</td>
+              <td style="vertical-align: middle;">30.50</td>
+              <td style="vertical-align: middle;">73.67</td>
+              <td style="vertical-align: middle;">39.14</td>
+              <td style="vertical-align: middle;">0.15</td>
+              <td style="vertical-align: middle;">0.34</td>
+              <td style="vertical-align: middle;">0.61</td>
+              <td style="vertical-align: middle;">0.37</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/omerbt/TokenFlow" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        TokenFlow
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">0.28</td>
+              <td style="vertical-align: middle;">1.62</td>
+              <td style="vertical-align: middle;">18.29</td>
+              <td style="vertical-align: middle;">6.73</td>
+              <td style="vertical-align: middle;">6.41</td>
+              <td style="vertical-align: middle;">12.34</td>
+              <td style="vertical-align: middle;">42.64</td>
+              <td style="vertical-align: middle;">20.46</td>
+              <td style="vertical-align: middle;">0.07</td>
+              <td style="vertical-align: middle;">0.13</td>
+              <td style="vertical-align: middle;">0.26</td>
+              <td style="vertical-align: middle;">0.15</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/FoundationVision/UniTok" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        UniTok
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;"><strong>13.53</strong></td>
+              <td style="vertical-align: middle;"><strong>42.87</strong></td>
+              <td style="vertical-align: middle;"><strong>77.35</strong></td>
+              <td style="vertical-align: middle;"><strong>44.59</strong></td>
+              <td style="vertical-align: middle;"><strong>38.73</strong></td>
+              <td style="vertical-align: middle;"><strong>68.51</strong></td>
+              <td style="vertical-align: middle;"><strong>90.27</strong></td>
+              <td style="vertical-align: middle;"><strong>65.84</strong></td>
+              <td style="vertical-align: middle;">0.15</td>
+              <td style="vertical-align: middle;">0.32</td>
+              <td style="vertical-align: middle;">0.58</td>
+              <td style="vertical-align: middle;">0.35</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/TencentARC/SEED-Voken" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        O-MAGVIT2
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">0.34</td>
+              <td style="vertical-align: middle;">1.49</td>
+              <td style="vertical-align: middle;">20.73</td>
+              <td style="vertical-align: middle;">7.52</td>
+              <td style="vertical-align: middle;">6.46</td>
+              <td style="vertical-align: middle;">12.41</td>
+              <td style="vertical-align: middle;">44.10</td>
+              <td style="vertical-align: middle;">20.99</td>
+              <td style="vertical-align: middle;">0.08</td>
+              <td style="vertical-align: middle;">0.15</td>
+              <td style="vertical-align: middle;">0.34</td>
+              <td style="vertical-align: middle;">0.19</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/TencentARC/SEED-Voken" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        O-MAGVIT2(Pretrain)
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">0.80</td>
+              <td style="vertical-align: middle;">3.17</td>
+              <td style="vertical-align: middle;">27.76</td>
+              <td style="vertical-align: middle;">10.58</td>
+              <td style="vertical-align: middle;">9.59</td>
+              <td style="vertical-align: middle;">19.15</td>
+              <td style="vertical-align: middle;">54.02</td>
+              <td style="vertical-align: middle;">27.59</td>
+              <td style="vertical-align: middle;">0.08</td>
+              <td style="vertical-align: middle;">0.16</td>
+              <td style="vertical-align: middle;">0.35</td>
+              <td style="vertical-align: middle;">0.20</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/FoundationVision/LlamaGen" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        LlamaGen(F8)
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">4.39</td>
+              <td style="vertical-align: middle;">17.86</td>
+              <td style="vertical-align: middle;">65.97</td>
+              <td style="vertical-align: middle;">29.41</td>
+              <td style="vertical-align: middle;">19.69</td>
+              <td style="vertical-align: middle;">44.56</td>
+              <td style="vertical-align: middle;">82.76</td>
+              <td style="vertical-align: middle;">49.00</td>
+              <td style="vertical-align: middle;">0.17</td>
+              <td style="vertical-align: middle;">0.38</td>
+              <td style="vertical-align: middle;">0.66</td>
+              <td style="vertical-align: middle;">0.40</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/TencentARC/SEED-Voken" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        O-MAGVIT2(F8)
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">9.33</td>
+              <td style="vertical-align: middle;">34.16</td>
+              <td style="vertical-align: middle;">77.24</td>
+              <td style="vertical-align: middle;">40.24</td>
+              <td style="vertical-align: middle;">30.82</td>
+              <td style="vertical-align: middle;">59.89</td>
+              <td style="vertical-align: middle;">89.19</td>
+              <td style="vertical-align: middle;">59.97</td>
+              <td style="vertical-align: middle;"><strong>0.23</strong></td>
+              <td style="vertical-align: middle;"><strong>0.48</strong></td>
+              <td style="vertical-align: middle;"><strong>0.74</strong></td>
+              <td style="vertical-align: middle;"><strong>0.48</strong></td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://nvlabs.github.io/Sana/" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        DC-AE
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">1.42</td>
+              <td style="vertical-align: middle;">5.16</td>
+              <td style="vertical-align: middle;">42.45</td>
+              <td style="vertical-align: middle;">16.35</td>
+              <td style="vertical-align: middle;">10.95</td>
+              <td style="vertical-align: middle;">24.06</td>
+              <td style="vertical-align: middle;">66.45</td>
+              <td style="vertical-align: middle;">33.82</td>
+              <td style="vertical-align: middle;">0.10</td>
+              <td style="vertical-align: middle;">0.21</td>
+              <td style="vertical-align: middle;">0.45</td>
+              <td style="vertical-align: middle;">0.26</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/hustvl/LightningDiT" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        VA-VAE
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">6.92</td>
+              <td style="vertical-align: middle;">28.25</td>
+              <td style="vertical-align: middle;">75.96</td>
+              <td style="vertical-align: middle;">37.04</td>
+              <td style="vertical-align: middle;">25.14</td>
+              <td style="vertical-align: middle;">55.30</td>
+              <td style="vertical-align: middle;">88.52</td>
+              <td style="vertical-align: middle;">56.32</td>
+              <td style="vertical-align: middle;">0.22</td>
+              <td style="vertical-align: middle;">0.48</td>
+              <td style="vertical-align: middle;">0.76</td>
+              <td style="vertical-align: middle;">0.49</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/Stability-AI/generative-models" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        SD-XL
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">6.94</td>
+              <td style="vertical-align: middle;">24.83</td>
+              <td style="vertical-align: middle;">70.85</td>
+              <td style="vertical-align: middle;">34.21</td>
+              <td style="vertical-align: middle;">25.03</td>
+              <td style="vertical-align: middle;">50.96</td>
+              <td style="vertical-align: middle;">85.03</td>
+              <td style="vertical-align: middle;">53.68</td>
+              <td style="vertical-align: middle;">0.18</td>
+              <td style="vertical-align: middle;">0.40</td>
+              <td style="vertical-align: middle;">0.69</td>
+              <td style="vertical-align: middle;">0.42</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/Stability-AI/sd3.5" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        SD-3.5
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">36.26</td>
+              <td style="vertical-align: middle;">72.18</td>
+              <td style="vertical-align: middle;">92.68</td>
+              <td style="vertical-align: middle;">67.04</td>
+              <td style="vertical-align: middle;">59.04</td>
+              <td style="vertical-align: middle;">85.64</td>
+              <td style="vertical-align: middle;">97.06</td>
+              <td style="vertical-align: middle;">80.58</td>
+              <td style="vertical-align: middle;">0.43</td>
+              <td style="vertical-align: middle;">0.76</td>
+              <td style="vertical-align: middle;">0.92</td>
+              <td style="vertical-align: middle;">0.70</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/black-forest-labs/flux" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        FLUX.1-dev
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;"><strong>50.69</strong></td>
+              <td style="vertical-align: middle;"><strong>82.14</strong></td>
+              <td style="vertical-align: middle;"><strong>94.89</strong></td>
+              <td style="vertical-align: middle;"><strong>75.91</strong></td>
+              <td style="vertical-align: middle;"><strong>70.70</strong></td>
+              <td style="vertical-align: middle;"><strong>90.67</strong></td>
+              <td style="vertical-align: middle;"><strong>97.90</strong></td>
+              <td style="vertical-align: middle;"><strong>86.42</strong></td>
+              <td style="vertical-align: middle;"><strong>0.52</strong></td>
+              <td style="vertical-align: middle;"><strong>0.83</strong></td>
+              <td style="vertical-align: middle;"><strong>0.95</strong></td>
+              <td style="vertical-align: middle;"><strong>0.76</strong></td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+                <th colspan="18" style="font-style: italic;"><strong>Resolution: 512 × 512</strong></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;"><b>Resize</b></td>
+              <td style="vertical-align: middle;">-</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">92.51</td>
+              <td style="vertical-align: middle;">98.18</td>
+              <td style="vertical-align: middle;">98.86</td>
+              <td style="vertical-align: middle;">96.52</td>
+              <td style="vertical-align: middle;">96.25</td>
+              <td style="vertical-align: middle;">99.24</td>
+              <td style="vertical-align: middle;">99.64</td>
+              <td style="vertical-align: middle;">98.38</td>
+              <td style="vertical-align: middle;">0.95</td>
+              <td style="vertical-align: middle;">0.99</td>
+              <td style="vertical-align: middle;">1.00</td>
+              <td style="vertical-align: middle;">0.98</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/CompVis/taming-transformers" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                          VQGAN
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">0.15</td>
+              <td style="vertical-align: middle;">0.76</td>
+              <td style="vertical-align: middle;">17.45</td>
+              <td style="vertical-align: middle;">6.12</td>
+              <td style="vertical-align: middle;">5.20</td>
+              <td style="vertical-align: middle;">8.99</td>
+              <td style="vertical-align: middle;">37.77</td>
+              <td style="vertical-align: middle;">17.32</td>
+              <td style="vertical-align: middle;">0.08</td>
+              <td style="vertical-align: middle;">0.11</td>
+              <td style="vertical-align: middle;">0.37</td>
+              <td style="vertical-align: middle;">0.19</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/facebookresearch/chameleon" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        Chameleon
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">0.60</td>
+              <td style="vertical-align: middle;">2.67</td>
+              <td style="vertical-align: middle;">31.39</td>
+              <td style="vertical-align: middle;">11.55</td>
+              <td style="vertical-align: middle;">7.63</td>
+              <td style="vertical-align: middle;">17.82</td>
+              <td style="vertical-align: middle;">54.95</td>
+              <td style="vertical-align: middle;">26.80</td>
+              <td style="vertical-align: middle;">0.13</td>
+              <td style="vertical-align: middle;">0.21</td>
+              <td style="vertical-align: middle;">0.50</td>
+              <td style="vertical-align: middle;">0.28</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/FoundationVision/LlamaGen" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      LlamaGen
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">0.67</td>
+            <td style="vertical-align: middle;">3.93</td>
+            <td style="vertical-align: middle;">40.43</td>
+            <td style="vertical-align: middle;">15.01</td>
+            <td style="vertical-align: middle;">7.76</td>
+            <td style="vertical-align: middle;">20.17</td>
+            <td style="vertical-align: middle;">63.39</td>
+            <td style="vertical-align: middle;">30.44</td>
+            <td style="vertical-align: middle;">0.11</td>
+            <td style="vertical-align: middle;">0.17</td>
+            <td style="vertical-align: middle;">0.48</td>
+            <td style="vertical-align: middle;">0.25</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/FoundationVision/VAR" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      VAR
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">3.71</td>
+            <td style="vertical-align: middle;">20.59</td>
+            <td style="vertical-align: middle;">63.62</td>
+            <td style="vertical-align: middle;">29.31</td>
+            <td style="vertical-align: middle;">18.01</td>
+            <td style="vertical-align: middle;">49.56</td>
+            <td style="vertical-align: middle;">82.44</td>
+            <td style="vertical-align: middle;">50.00</td> 
+            <td style="vertical-align: middle;">0.14</td>
+            <td style="vertical-align: middle;">0.24</td>
+            <td style="vertical-align: middle;">0.57</td>
+            <td style="vertical-align: middle;">0.32</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/FoundationVision/OmniTokenizer" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      OmniTokenizer
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">6.21</td>
+            <td style="vertical-align: middle;">38.33</td>
+            <td style="vertical-align: middle;">82.91</td>
+            <td style="vertical-align: middle;">42.48</td>
+            <td style="vertical-align: middle;">23.44</td>
+            <td style="vertical-align: middle;">65.99</td>
+            <td style="vertical-align: middle;">92.66</td>
+            <td style="vertical-align: middle;">60.70</td>
+            <td style="vertical-align: middle;">0.24</td>
+            <td style="vertical-align: middle;">0.45</td>
+            <td style="vertical-align: middle;">0.80</td>
+            <td style="vertical-align: middle;">0.50</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/omerbt/TokenFlow" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      TokenFlow
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">1.06</td>
+            <td style="vertical-align: middle;">6.27</td>
+            <td style="vertical-align: middle;">44.88</td>
+            <td style="vertical-align: middle;">17.40</td>
+            <td style="vertical-align: middle;">10.00</td>
+            <td style="vertical-align: middle;">28.39</td>
+            <td style="vertical-align: middle;">68.07</td>
+            <td style="vertical-align: middle;">35.49</td>
+            <td style="vertical-align: middle;">0.11</td>
+            <td style="vertical-align: middle;">0.16</td>
+            <td style="vertical-align: middle;">0.45</td>
+            <td style="vertical-align: middle;">0.24</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/FoundationVision/UniTok" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      UniTok
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">17.25</td>
+            <td style="vertical-align: middle;">51.86</td>
+            <td style="vertical-align: middle;">81.20</td>
+            <td style="vertical-align: middle;">50.10</td>
+            <td style="vertical-align: middle;">44.75</td>
+            <td style="vertical-align: middle;">76.28</td>
+            <td style="vertical-align: middle;">92.20</td>
+            <td style="vertical-align: middle;">71.08</td>
+            <td style="vertical-align: middle;">0.22</td>
+            <td style="vertical-align: middle;">0.36</td>
+            <td style="vertical-align: middle;">0.74</td>
+            <td style="vertical-align: middle;">0.44</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/TencentARC/SEED-Voken" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      O-MAGVIT2
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">1.40</td>
+            <td style="vertical-align: middle;">9.51</td>
+            <td style="vertical-align: middle;">54.04</td>
+            <td style="vertical-align: middle;">21.65</td>
+            <td style="vertical-align: middle;">10.79</td>
+            <td style="vertical-align: middle;">33.15</td>
+            <td style="vertical-align: middle;">74.94</td>
+            <td style="vertical-align: middle;">39.63</td>
+            <td style="vertical-align: middle;">0.13</td>
+            <td style="vertical-align: middle;">0.22</td>
+            <td style="vertical-align: middle;">0.58</td>
+            <td style="vertical-align: middle;">0.31</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/TencentARC/SEED-Voken" class="ext-link" style="font-size: 14px; margin-left: 5px;">
+                      O-MAGVIT2(Pretrain)
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">3.02</td>
+            <td style="vertical-align: middle;">16.25</td>
+            <td style="vertical-align: middle;">62.72</td>
+            <td style="vertical-align: middle;">27.33</td>
+            <td style="vertical-align: middle;">16.87</td>
+            <td style="vertical-align: middle;">44.50</td>
+            <td style="vertical-align: middle;">80.48</td>
+            <td style="vertical-align: middle;">47.28</td>
+            <td style="vertical-align: middle;">0.13</td>
+            <td style="vertical-align: middle;">0.22</td>
+            <td style="vertical-align: middle;">0.57</td>
+            <td style="vertical-align: middle;">0.31</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/FoundationVision/LlamaGen" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      LlamaGen(F8)
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">12.13</td>
+            <td style="vertical-align: middle;">56.66</td>
+            <td style="vertical-align: middle;">88.89</td>
+            <td style="vertical-align: middle;">52.56</td>
+            <td style="vertical-align: middle;">34.11</td>
+            <td style="vertical-align: middle;">77.45</td>
+            <td style="vertical-align: middle;">95.39</td>
+            <td style="vertical-align: middle;">68.99</td>
+            <td style="vertical-align: middle;">0.28</td>
+            <td style="vertical-align: middle;">0.49</td>
+            <td style="vertical-align: middle;">0.83</td>
+            <td style="vertical-align: middle;">0.53</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/TencentARC/SEED-Voken" class="ext-link" style="font-size: 14px; margin-left: 5px;">
+                      O-MAGVIT2(F8)
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;"><strong>20.66</strong></td>
+            <td style="vertical-align: middle;"><strong>70.36</strong></td>
+            <td style="vertical-align: middle;"><strong>90.66</strong></td>
+            <td style="vertical-align: middle;"><strong>60.56</strong></td>
+            <td style="vertical-align: middle;"><strong>46.60</strong></td>
+            <td style="vertical-align: middle;"><strong>85.41</strong></td>
+            <td style="vertical-align: middle;"><strong>96.00</strong></td>
+            <td style="vertical-align: middle;"><strong>76.00</strong></td>
+            <td style="vertical-align: middle;"><strong>0.35</strong></td>
+            <td style="vertical-align: middle;"><strong>0.58</strong></td>
+            <td style="vertical-align: middle;"><strong>0.88</strong></td>
+            <td style="vertical-align: middle;"><strong>0.61</strong></td>           
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://nvlabs.github.io/Sana/" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      DC-AE
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">5.31</td>
+            <td style="vertical-align: middle;">30.10</td>
+            <td style="vertical-align: middle;">79.33</td>
+            <td style="vertical-align: middle;">38.25</td>
+            <td style="vertical-align: middle;">20.91</td>
+            <td style="vertical-align: middle;">57.78</td>
+            <td style="vertical-align: middle;">89.98</td>
+            <td style="vertical-align: middle;">56.22</td>
+            <td style="vertical-align: middle;">0.16</td>
+            <td style="vertical-align: middle;">0.29</td>
+            <td style="vertical-align: middle;">0.71</td>
+            <td style="vertical-align: middle;">0.39</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/hustvl/LightningDiT" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      VA-VAE
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">12.72</td>
+            <td style="vertical-align: middle;">58.73</td>
+            <td style="vertical-align: middle;">88.43</td>
+            <td style="vertical-align: middle;">53.30</td>
+            <td style="vertical-align: middle;">34.80</td>
+            <td style="vertical-align: middle;">78.86</td>
+            <td style="vertical-align: middle;">95.30</td>
+            <td style="vertical-align: middle;">69.65</td>
+            <td style="vertical-align: middle;">0.31</td>
+            <td style="vertical-align: middle;">0.54</td>
+            <td style="vertical-align: middle;">0.87</td>
+            <td style="vertical-align: middle;">0.57</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/Stability-AI/generative-models" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      SD-XL
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">16.53</td>
+            <td style="vertical-align: middle;">62.87</td>
+            <td style="vertical-align: middle;">91.20</td>
+            <td style="vertical-align: middle;">56.86</td>
+            <td style="vertical-align: middle;">40.43</td>
+            <td style="vertical-align: middle;">80.83</td>
+            <td style="vertical-align: middle;">96.40</td>
+            <td style="vertical-align: middle;">72.55</td>
+            <td style="vertical-align: middle;">0.29</td>
+            <td style="vertical-align: middle;">0.51</td>
+            <td style="vertical-align: middle;">0.87</td>
+            <td style="vertical-align: middle;">0.55</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/Stability-AI/sd3.5" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      SD-3.5
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">56.55</td>
+            <td style="vertical-align: middle;">91.64</td>
+            <td style="vertical-align: middle;">97.33</td>
+            <td style="vertical-align: middle;">81.84</td>
+            <td style="vertical-align: middle;">75.56</td>
+            <td style="vertical-align: middle;">96.44</td>
+            <td style="vertical-align: middle;">98.91</td>
+            <td style="vertical-align: middle;">90.30</td>
+            <td style="vertical-align: middle;">0.61</td>
+            <td style="vertical-align: middle;">0.84</td>
+            <td style="vertical-align: middle;">0.98</td>
+            <td style="vertical-align: middle;">0.81</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/black-forest-labs/flux" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      FLUX.1-dev
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;"><strong>70.29</strong></td>
+            <td style="vertical-align: middle;"><strong>94.62</strong></td>
+            <td style="vertical-align: middle;"><strong>98.02</strong></td>
+            <td style="vertical-align: middle;"><strong>87.64</strong></td>
+            <td style="vertical-align: middle;"><strong>84.67</strong></td>
+            <td style="vertical-align: middle;"><strong>97.65</strong></td>
+            <td style="vertical-align: middle;"><strong>99.26</strong></td>
+            <td style="vertical-align: middle;"><strong>93.86</strong></td>
+            <td style="vertical-align: middle;"><strong>0.71</strong></td>
+            <td style="vertical-align: middle;"><strong>0.89</strong></td>
+            <td style="vertical-align: middle;"><strong>0.98</strong></td>
+            <td style="vertical-align: middle;"><strong>0.86</strong></td>          
+          </tr>
+          </tbody>
+          <thead>
+            <tr>
+                <th colspan="18" style="font-style: italic;"><strong>Resolution: 1024 × 1024</strong></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;"><b>Resize</b></td>
+              <td style="vertical-align: middle;">-</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">95.15</td>
+              <td style="vertical-align: middle;">98.39</td>
+              <td style="vertical-align: middle;">99.30</td>
+              <td style="vertical-align: middle;">97.61</td>
+              <td style="vertical-align: middle;">97.97</td>
+              <td style="vertical-align: middle;">99.33</td>
+              <td style="vertical-align: middle;">99.77</td>
+              <td style="vertical-align: middle;">99.02</td>
+              <td style="vertical-align: middle;">1.0</td>
+              <td style="vertical-align: middle;">1.0</td>
+              <td style="vertical-align: middle;">1.0</td>
+              <td style="vertical-align: middle;">1.0</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/CompVis/taming-transformers" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                          VQGAN
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">0.76</td>
+              <td style="vertical-align: middle;">2.69</td>
+              <td style="vertical-align: middle;">41.53</td>
+              <td style="vertical-align: middle;">15.00</td>
+              <td style="vertical-align: middle;">7.90</td>
+              <td style="vertical-align: middle;">15.03</td>
+              <td style="vertical-align: middle;">63.47</td>
+              <td style="vertical-align: middle;">28.80</td>
+              <td style="vertical-align: middle;">0.10</td>
+              <td style="vertical-align: middle;">0.19</td>
+              <td style="vertical-align: middle;">0.47</td>
+              <td style="vertical-align: middle;">0.25</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/facebookresearch/chameleon" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        Chameleon
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">3.00</td>
+              <td style="vertical-align: middle;">8.22</td>
+              <td style="vertical-align: middle;">59.33</td>
+              <td style="vertical-align: middle;">23.52</td>
+              <td style="vertical-align: middle;">14.46</td>
+              <td style="vertical-align: middle;">29.14</td>
+              <td style="vertical-align: middle;">77.56</td>
+              <td style="vertical-align: middle;">40.39</td>
+              <td style="vertical-align: middle;">0.19</td>
+              <td style="vertical-align: middle;">0.30</td>
+              <td style="vertical-align: middle;">0.58</td>
+              <td style="vertical-align: middle;">0.36</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/FoundationVision/LlamaGen" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      LlamaGen
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">3.30</td>
+            <td style="vertical-align: middle;">10.62</td>
+            <td style="vertical-align: middle;">67.63</td>
+            <td style="vertical-align: middle;">27.19</td>
+            <td style="vertical-align: middle;">14.13</td>
+            <td style="vertical-align: middle;">33.02</td>
+            <td style="vertical-align: middle;">83.57</td>
+            <td style="vertical-align: middle;">43.58</td>
+            <td style="vertical-align: middle;">0.15</td>
+            <td style="vertical-align: middle;">0.27</td>
+            <td style="vertical-align: middle;">0.57</td>
+            <td style="vertical-align: middle;">0.33</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/FoundationVision/VAR" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      VAR
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">9.64</td>
+            <td style="vertical-align: middle;">30.08</td>
+            <td style="vertical-align: middle;">75.35</td>
+            <td style="vertical-align: middle;">38.36</td>
+            <td style="vertical-align: middle;">29.07</td>
+            <td style="vertical-align: middle;">59.16</td>
+            <td style="vertical-align: middle;">89.51</td>
+            <td style="vertical-align: middle;">59.25</td>
+            <td style="vertical-align: middle;">0.23</td>
+            <td style="vertical-align: middle;">0.34</td>
+            <td style="vertical-align: middle;">0.62</td>
+            <td style="vertical-align: middle;">0.40</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/FoundationVision/OmniTokenizer" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      OmniTokenizer
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">14.27</td>
+            <td style="vertical-align: middle;">54.67</td>
+            <td style="vertical-align: middle;">91.49</td>
+            <td style="vertical-align: middle;">53.48</td>
+            <td style="vertical-align: middle;">36.63</td>
+            <td style="vertical-align: middle;">76.92</td>
+            <td style="vertical-align: middle;">96.53</td>
+            <td style="vertical-align: middle;">70.02</td>
+            <td style="vertical-align: middle;">0.40</td>
+            <td style="vertical-align: middle;">0.60</td>
+            <td style="vertical-align: middle;">0.82</td>
+            <td style="vertical-align: middle;">0.61</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/omerbt/TokenFlow" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      TokenFlow
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">4.46</td>
+            <td style="vertical-align: middle;">14.86</td>
+            <td style="vertical-align: middle;">68.57</td>
+            <td style="vertical-align: middle;">29.30</td>
+            <td style="vertical-align: middle;">18.62</td>
+            <td style="vertical-align: middle;">41.21</td>
+            <td style="vertical-align: middle;">84.43</td>
+            <td style="vertical-align: middle;">48.09</td>
+            <td style="vertical-align: middle;">0.14</td>
+            <td style="vertical-align: middle;">0.26</td>
+            <td style="vertical-align: middle;">0.55</td>
+            <td style="vertical-align: middle;">0.31</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/FoundationVision/UniTok" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      UniTok
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">26.90</td>
+            <td style="vertical-align: middle;">47.91</td>
+            <td style="vertical-align: middle;">74.29</td>
+            <td style="vertical-align: middle;">49.70</td>
+            <td style="vertical-align: middle;">54.36</td>
+            <td style="vertical-align: middle;">72.48</td>
+            <td style="vertical-align: middle;">87.93</td>
+            <td style="vertical-align: middle;">71.59</td>
+            <td style="vertical-align: middle;">0.33</td>
+            <td style="vertical-align: middle;">0.50</td>
+            <td style="vertical-align: middle;">0.76</td>
+            <td style="vertical-align: middle;">0.53</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/TencentARC/SEED-Voken" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      O-MAGVIT2
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">5.76</td>
+            <td style="vertical-align: middle;">20.74</td>
+            <td style="vertical-align: middle;">77.71</td>
+            <td style="vertical-align: middle;">34.74</td>
+            <td style="vertical-align: middle;">19.42</td>
+            <td style="vertical-align: middle;">47.04</td>
+            <td style="vertical-align: middle;">89.63</td>
+            <td style="vertical-align: middle;">52.03</td>
+            <td style="vertical-align: middle;">0.20</td>
+            <td style="vertical-align: middle;">0.34</td>
+            <td style="vertical-align: middle;">0.66</td>
+            <td style="vertical-align: middle;">0.40</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/TencentARC/SEED-Voken" class="ext-link" style="font-size: 14px; margin-left: 5px;">
+                      O-MAGVIT2(Pretrain)
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">9.08</td>
+            <td style="vertical-align: middle;">29.35</td>
+            <td style="vertical-align: middle;">79.77</td>
+            <td style="vertical-align: middle;">39.40</td>
+            <td style="vertical-align: middle;">28.65</td>
+            <td style="vertical-align: middle;">57.43</td>
+            <td style="vertical-align: middle;">90.78</td>
+            <td style="vertical-align: middle;">58.95</td>
+            <td style="vertical-align: middle;">0.21</td>
+            <td style="vertical-align: middle;">0.34</td>
+            <td style="vertical-align: middle;">0.65</td>
+            <td style="vertical-align: middle;">0.40</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/FoundationVision/LlamaGen" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      LlamaGen(F8)
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">25.42</td>
+            <td style="vertical-align: middle;">71.63</td>
+            <td style="vertical-align: middle;">94.61</td>
+            <td style="vertical-align: middle;">63.89</td>
+            <td style="vertical-align: middle;">50.33</td>
+            <td style="vertical-align: middle;">86.45</td>
+            <td style="vertical-align: middle;">97.95</td>
+            <td style="vertical-align: middle;">78.24</td>
+            <td style="vertical-align: middle;">0.49</td>
+            <td style="vertical-align: middle;">0.66</td>
+            <td style="vertical-align: middle;">0.87</td>
+            <td style="vertical-align: middle;">0.67</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/TencentARC/SEED-Voken" class="ext-link" style="font-size: 14px; margin-left: 5px;">
+                      O-MAGVIT2(F8)
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;"><strong>35.29</strong></td>
+            <td style="vertical-align: middle;"><strong>78.91</strong></td>
+            <td style="vertical-align: middle;"><strong>94.84</strong></td>
+            <td style="vertical-align: middle;"><strong>69.68</strong></td>
+            <td style="vertical-align: middle;"><strong>60.97</strong></td>
+            <td style="vertical-align: middle;"><strong>90.36</strong></td>
+            <td style="vertical-align: middle;"><strong>98.03</strong></td>
+            <td style="vertical-align: middle;"><strong>83.12</strong></td>
+            <td style="vertical-align: middle;"><strong>0.57</strong></td>
+            <td style="vertical-align: middle;"><strong>0.74</strong></td>
+            <td style="vertical-align: middle;"><strong>0.91</strong></td>
+            <td style="vertical-align: middle;"><strong>0.74</strong></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://nvlabs.github.io/Sana/" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      DC-AE
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">15.32</td>
+            <td style="vertical-align: middle;">48.36</td>
+            <td style="vertical-align: middle;">92.72</td>
+            <td style="vertical-align: middle;">52.14</td>
+            <td style="vertical-align: middle;">35.47</td>
+            <td style="vertical-align: middle;">71.69</td>
+            <td style="vertical-align: middle;">96.89</td>
+            <td style="vertical-align: middle;">68.02</td>
+            <td style="vertical-align: middle;">0.27</td>
+            <td style="vertical-align: middle;">0.45</td>
+            <td style="vertical-align: middle;">0.78</td>
+            <td style="vertical-align: middle;">0.50</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/hustvl/LightningDiT" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      VA-VAE
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">25.14</td>
+            <td style="vertical-align: middle;">69.54</td>
+            <td style="vertical-align: middle;">93.84</td>
+            <td style="vertical-align: middle;">62.84</td>
+            <td style="vertical-align: middle;">48.94</td>
+            <td style="vertical-align: middle;">85.17</td>
+            <td style="vertical-align: middle;">97.52</td>
+            <td style="vertical-align: middle;">77.21</td>
+            <td style="vertical-align: middle;">0.49</td>
+            <td style="vertical-align: middle;">0.68</td>
+            <td style="vertical-align: middle;">0.89</td>
+            <td style="vertical-align: middle;">0.69</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/Stability-AI/generative-models" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      SD-XL
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">31.41</td>
+            <td style="vertical-align: middle;">75.83</td>
+            <td style="vertical-align: middle;">96.29</td>
+            <td style="vertical-align: middle;">67.84</td>
+            <td style="vertical-align: middle;">56.60</td>
+            <td style="vertical-align: middle;">88.34</td>
+            <td style="vertical-align: middle;">98.52</td>
+            <td style="vertical-align: middle;">81.15</td>
+            <td style="vertical-align: middle;">0.50</td>
+            <td style="vertical-align: middle;">0.69</td>
+            <td style="vertical-align: middle;">0.91</td>
+            <td style="vertical-align: middle;">0.70</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/Stability-AI/sd3.5" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      SD-3.5
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">74.88</td>
+            <td style="vertical-align: middle;">95.76</td>
+            <td style="vertical-align: middle;">98.50</td>
+            <td style="vertical-align: middle;">89.71</td>
+            <td style="vertical-align: middle;">87.57</td>
+            <td style="vertical-align: middle;">98.15</td>
+            <td style="vertical-align: middle;">99.44</td>
+            <td style="vertical-align: middle;">95.05</td>
+            <td style="vertical-align: middle;">0.86</td>
+            <td style="vertical-align: middle;">0.94</td>
+            <td style="vertical-align: middle;">0.99</td>
+            <td style="vertical-align: middle;">0.93</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/black-forest-labs/flux" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      FLUX.1-dev
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;"><strong>83.71</strong></td>
+            <td style="vertical-align: middle;"><strong>96.83</strong></td>
+            <td style="vertical-align: middle;"><strong>98.72</strong></td>
+            <td style="vertical-align: middle;"><strong>93.09</strong></td>
+            <td style="vertical-align: middle;"><strong>92.68</strong></td>
+            <td style="vertical-align: middle;"><strong>98.69</strong></td>
+            <td style="vertical-align: middle;"><strong>99.52</strong></td>
+            <td style="vertical-align: middle;"><strong>96.96</strong></td>
+            <td style="vertical-align: middle;"><strong>0.92</strong></td>
+            <td style="vertical-align: middle;"><strong>0.97</strong></td>
+            <td style="vertical-align: middle;"><strong>0.99</strong></td>
+            <td style="vertical-align: middle;"><strong>0.96</strong></td>
+          </tr>
+          </tbody>
+        </table>      
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATASET SECTION -->
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+  <h1 class="title is-1 mathvista_other">
+    <span class="mathvista_other" style="vertical-align: middle">Benchmark</span>
+  </h1>
+  </div>
+</section>
+            
+<section class="section">
+  <div class="container">
+
+    <div class="columns is-centered">
+      <div class="column has-text-centered content">
+        <h2 class="title is-3">Evaluation of TokBench</h2>
+          <div class="box m-5">
+
+            <div class="content has-text-centered">
+                <img src="static/images/exp_results/metric_compare.jpg" alt="metric_compare" width="80%"/>
+                <p style="text-align: center;width: 85%; margin: 0 auto;", class="mt-3">
+                  <strong> Comparison of Different Metrics with Human Judgments.</strong> In each case, previous metrics (PSNR, SSIM, LPIPS) demonstrate discrepancies with human assessments, whereas our proposed face similarity and text accuracy effectively reflect the reconstruction quality.
+                </p>
+              </div>
+            
+            <div class="content has-text-centered"  style = "margin-top: 5%;">
+              <img src="static/images/pipeline/pipeline.jpg" alt="pipeline" width="60%"/>
+                <p style="text-align: center;width: 80%; margin: 0 auto;", class="mt-3">
+                  We employ established OCR and face recognition models for evaluation, ensuring accuracy while maintaining an exceptionally lightweight assessment process <strong>requiring just 2GB memory and 4 minutes</strong> to complete.   
+                </p>
+            </div>
+
+
+            <div class="content has-text-centered" style = "margin-top: 5%;">
+                <img src="static/images/exp_results/metric_visualize.jpg" alt="metric_visualize" width="60%"/>
+                 <p style="text-align: center;width: 80%; margin: 0 auto;", class="mt-3">
+                  <strong> Comparison between reconstructed images (Right) and original images (Left) under different T-ACC and F-Sim metrics.</strong> Higher metric values indicate reconstructed images that more closely resemble the original.
+                </p>
+              </div>
+
+
+          </div>     
+      </div>
+    </div>
+
+
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Data Examples</h2>
+          <div class="content has-text-justified">
+            <div class="box m-5">
+
+
+
+
+              
+              <div class="content has-text-centered" style = "margin-top: 5%;">
+                <img src="static/images/highlight_frames/visualize256.jpg" alt="metric_compare" width="80%"/>
+                <p style="text-align: center;", class="mt-3">
+                  <strong> 256 × 256 </strong>
+                </p>
+              </div>
+              <div class="content has-text-centered" style = "margin-top: 5%;">
+                <img src="static/images/highlight_frames/visualize1024.jpg" alt="metric_compare" width="80%"/>
+                <p style="text-align: center;", class="mt-3">
+                  <strong> 1024 × 1024 </strong>
+                </p>
+              </div>
+              
+              
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS SECTION -->
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-1 mathvista_other">Experiment Results</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+
+
+    <div class="columns is-centered m-6">
+      <div class="column is-full has-text-centered content">
+        <h2 class="title is-3">TokBench Experimental Results</h2>
+        <div class="box m-5"> 
+          <div class="content has-text-centered image-wrapper">
+            <img src="static/images/exp_results/Table1.png" alt="" width="70%"/>
+            <p style="margin-bottom: 30px;"><strong>(1) Performance of discrete and continuous tokenizer on TokBench.</strong></p>
+          </div>
+          <div class="content has-text-centered image-wrapper">
+            <img src="static/images/exp_results/Table2.png" alt="" width="70%"/>
+            <p style="margin-bottom: 30px;"><strong>(2) Performance of discrete and continuous tokenizer on TokBench text-set.</strong></p>
+          </div>
+          <div class="content has-text-centered image-wrapper">
+            <img src="static/images/exp_results/Table3.png" alt="" width="70%"/>
+            <p style="margin-bottom: 30px;"><strong>(3) Performance of discrete and continuous tokenizer on TokBench face-set.</strong></p>
+          </div>
+          <div class="content has-text-centered image-wrapper">
+            <img src="static/images/exp_results/Table4.png" alt="" width="70%"/>
+            <p style="margin-bottom: 30px;"><strong>(4) Performance of video tokenizer on TokBench-Video.</strong></p>
+          </div>
+          <div class="content has-text-centered image-wrapper">
+            <img src="static/images/exp_results/curve.png" alt="" width="70%"/>
+            <p style="margin-bottom: 30px;"><strong>(5) T-ACC and F-Sim metrics across reconstruction resolutions versus target scales.</strong></p>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+</section>
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-1 mathvista_other" id="citation">Citation</h1>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <pre><code>
+      @article{wu2025tokbench,
+        title={TokBench: Evaluating Your Visual Tokenizer before Visual Generation},
+        author={Zhang, Yi-Fan and Zhang, Huanyu and Tian, Haochen and Fu, Chaoyou and Zhang, Shuangqing and Wu, Junfei and Li, Feng and Wang, Kun and Wen, Qingsong and Zhang, Zhang and others},
+        journal={arXiv preprint arXiv:xxxx.xxxx},
+        year={2025}
+      }      
+</code></pre>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container" style="width: 60%;">
+  <style>
+      pre {
+        background-color: #f4f4f4;
+        padding: 5px; /* 调整padding为5px */
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow-x: auto; /* 允许水平滚动 */
+    }
+    code {
+        font-family: Consolas, "Courier New", monospace;
+        color: #d63384; /* 代码文本颜色 */
+    }
+  </style>
+
+
+  </div>
+</section>
+
+
+<footer class="footer">
+  <!-- <div class="container"> -->
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p style="text-align: center;">
+            This website is adapted from <a href="https://mme-realworld.github.io/home_page.html">MME-Realworld</a>, licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+</footer>
+
+</body>
+</html>

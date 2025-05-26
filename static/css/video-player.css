@@ -1,0 +1,314 @@
+
+.video-player {
+  position: relative;
+  width: 90%; /* 或您希望的最大宽度 */
+  margin: 0 auto; /* 居中显示 */
+  margin-bottom: 20px;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.video-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* 自定义播放按钮 */
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  background-color: rgba(255, 60, 60, 0.8); /* 半透明红色背景 */
+  border-radius: 50%; /* 圆形按钮 */
+  width: 60px; /* 按钮宽度 */
+  height: 60px; /* 按钮高度 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); /* 添加阴影 */
+  transition: all 0.3s ease; /* 添加过渡效果 */
+}
+
+.play-button:hover {
+  background-color: rgba(255, 60, 60, 1); /* 鼠标悬停时的背景颜色 */
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.3); /* 鼠标悬停时的阴影 */
+}
+
+.play-button::before {
+  content: "\25BA"; /* 使用一个不同的Unicode播放图标 */
+  font-size: 24px;
+  color: #ffffff; /* 图标颜色改为白色 */
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* 添加文字阴影 */
+  transition: all 0.3s ease; /* 添加过渡效果 */
+  line-height: 60px; /* 调整图标的垂直位置 */
+  letter-spacing: -3px; /* 调整图标的水平位置 */
+}
+
+.play-button-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  background-color: rgba(255, 60, 60, 0.8); /* 半透明红色背景 */
+  border-radius: 50%; /* 圆形按钮 */
+  width: 60px; /* 按钮宽度 */
+  height: 60px; /* 按钮高度 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); /* 添加阴影 */
+  transition: all 0.3s ease; /* 添加过渡效果 */
+}
+
+.play-button-2:hover {
+  background-color: rgba(255, 60, 60, 1); /* 鼠标悬停时的背景颜色 */
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.3); /* 鼠标悬停时的阴影 */
+}
+
+.play-button-2::before {
+  content: "\25BA"; /* 使用一个不同的Unicode播放图标 */
+  font-size: 24px;
+  color: #ffffff; /* 图标颜色改为白色 */
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* 添加文字阴影 */
+  transition: all 0.3s ease; /* 添加过渡效果 */
+  line-height: 60px; /* 调整图标的垂直位置 */
+  letter-spacing: -3px; /* 调整图标的水平位置 */
+}
+
+.play-button-2:hover::before {
+  color: #eeeeee; /* 鼠标悬停时的图标颜色 */
+  text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3); /* 鼠标悬停时的文字阴影 */
+}
+
+/* 媒体控件样式 */
+.video-js .vjs-control-bar {
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+  color: #fff; /* 控件文字颜色 */
+}
+
+.video-duration {
+  font-family: Arial, sans-serif;
+  line-height: 1.25;
+}
+.video-duration p {
+  margin: 0.5em 0;
+}
+.video-duration strong {
+  color: #2c3e50;
+}
+
+.btn-basic-1 {
+  background-color: #69a8b2;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 100px; /* 调整外边距 */
+}
+.btn-basic-1:hover {
+  background-color: #3e9aa8;
+}
+
+.btn-basic-2 {
+  background-color: #69a8b2;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: inline-block; /* 使按钮在同一行显示 */
+  margin-right: 135px; /* 添加右边距 */
+}
+.btn-basic-2:hover {
+  background-color: #3e9aa8;
+}
+
+.btn-basic-3 {
+  background-color: #cbcbc4;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: inline-block; /* 使按钮在同一行显示 */
+  margin-right: 168px; /* 添加右边距 */
+}
+.btn-basic-3:hover {
+  background-color: #989890;
+}
+
+.btn-basic-4 {
+  background-color: #3d81d9;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: inline-block; /* 使按钮在同一行显示 */
+  margin-right: 158px; /* 添加右边距 */
+}
+.btn-basic-4:hover {
+  background-color: #1769d3;
+}
+
+.btn-basic-5 {
+  background-color: #89b1aa;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: inline-block; /* 使按钮在同一行显示 */
+  margin-right: 42px; /* 添加右边距 */
+}
+.btn-basic-5:hover {
+  background-color: #63a499;
+}
+
+.container-wrapper {
+  display: grid; /* 使用grid布局 */
+  grid-template-columns: 1fr 1.3fr; /* 调整列布局比例，右边列稍大 */
+  gap: -50px; /* 设置两个div之间的间距 */
+  align-items: center; /* 垂直对齐方式 */
+  justify-content: center; /* 水平居中对齐 */
+  margin: auto; /* 确保容器相对于页面居中 */
+  max-width: 1500px; /* 设置一个最大宽度，防止容器过宽 */
+  margin-top: -100px;
+  margin-bottom: -100px;
+}
+.image-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%; /*固定的高度可以根据实际需要调整*/
+}
+
+img {
+  object-fit: contain; /* 确保图片不会被拉伸变形 */
+}
+#container-task {
+  margin-top: -50px;
+  width: 100%; /* 宽度自适应 */
+  height: 500px; /* 明确指定高度 */
+}
+#container-object {
+  width: 100%; /* 宽度自适应 */
+  height: 500px; /* 明确指定高度 */
+}
+#container {
+  height: 100%;
+  margin-left: 150px;
+}
+
+#image-container {
+  height: 620px;
+  display: flex;
+  align-items: center; /* 垂直居中对齐 */
+  justify-content: center; /* 水平居中对齐 */
+}
+
+#image-container img {
+  max-width: 80%; /* 增大图片在容器内的最大宽度 */
+  height: auto; /* 保持图片比例 */
+  margin-right: 50px; /* 调整右边距 */
+}
+
+.btn-basic-6 {
+  background-color: #69a8b2;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 260px; /* 调整外边距 */
+}
+.btn-basic-6:hover {
+  background-color: #3e9aa8;
+}
+
+.btn-basic-7 {
+  background-color: #69a8b2;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: inline-block; /* 使按钮在同一行显示 */
+  margin-right: 122px; /* 添加右边距 */
+}
+.btn-basic-7:hover {
+  background-color: #3e9aa8;
+}
+
+.btn-basic-8 {
+  background-color: #cbcbc4;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: inline-block; /* 使按钮在同一行显示 */
+  margin-right: 120px; /* 添加右边距 */
+}
+.btn-basic-8:hover {
+  background-color: #989890;
+}
+
+.btn-basic-9 {
+  background-color: #dcaf80;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: inline-block; /* 使按钮在同一行显示 */
+  margin-right: 120px; /* 添加右边距 */
+}
+.btn-basic-9:hover {
+  background-color: #d59550;
+}
+
+.btn-basic-10 {
+  background-color: #a6c3dd;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: inline-block; /* 使按钮在同一行显示 */
+  margin-right: -30px; /* 添加右边距 */
+}
+.btn-basic-10:hover {
+  background-color: #7bb0df;
+}

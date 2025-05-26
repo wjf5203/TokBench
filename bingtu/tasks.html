@@ -1,0 +1,268 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=sunburst-drink&renderer=svg&code=G4QwTgBAJiAuIQLwQNoCgIQN4cxAdiALYCmAXBAOQBKJRA9rCQDr4DKJ-AzgJb4DmlADS5MPJkTawAngBty2UXgDG9WfTAVKAYmUBOACx6AzAAZKSgL4i8EZQAsesqGE4V0tzDk95CpLQBqJI7K8sJKtqCyAK4KAIwAdHE2PhDidFJyCt6pmKrqmlS6ICAGAGwArBa5lhEQ1nU5Pn4KlABC0U5QfIIpPlGxFInJdWISmfIUTan5GlraUABmAEZQAOwk1am1Pg22ALq4e4q2LYE8UCT0rACy9PjiGj3htumSMpMnnrOFOiBQACY4sZNlY-nZHM5XPh3I1RgRiK0AAokS5cWBgHggfAvVIDeJJcGvcYfbLwvJqOZFNaGNYVAFbXZ1Y62aanRGBYI8UKbIl4fFDQnwt4TMm5CkFebKZTGKAGOKMzw7JXgw6YFlfTBnKgAcU4JDAIFkrDYyk44B49C4uLGGVJUzqP3mIAAHGtlmUDIqNQ4utDYT42b4OVQpK4SLAIAEeCQAO42zwCiDDPm295ZB3iuyU366NYul1lPSK2zK0t8oNakOUABiBQQADIIDWQNFCAnIkbBsmhbkRfbNTMc_M5f84gz4WW8Bq1fVwdNtZQAILRWD3egMaJcVgAEUxwGe4P7GcHEqpOhIlRdxgn5aUvqhblQcNyi4AKobFotuRA2Dx-IQsgdvyXbxKmaQkielYqMORRyhUIAVMWk7MhW8KLiiaIYliOLgUmIx9pBnzQWeuYwBUyhxIsJbTqhL6pIuADyjE7hAjHLAAViQyiwMBmD4eBx7EeS2aSkUIAkMY8rUShuxoa-1ZBCEYR4aBQyCURYrik6cH5i6ALGDR6p0QcRwpAu1Y7pwXAsPgb4kAAHrxR6aZm3ywTocRuiAAIyXetgPi4T4eJ40GLm09D0AA1lwEBNkiVpMGA1qqTEYHCq5p7uWJOhrF5JiGbJKr0c0lkgE40gQAAMjwiwkL-Zr4CQKXwgJGV2lBIk6X8ALLKYALITUJl4LOxwWf4VBVeA_C2QAwvY4CwC1xIdcJPjddopjGHoKwut64KBf6z6Buh1Y1nw2LKFisgQPNi3LXianJhpq1abkG0uqYrp6FARn1MNrKnRNlCmjG-CwLVP60DZ4AOHxEBtYRr1ue9HnaGsIB6MsEl_VO6qqmZaD7AA3Gg9AAA4Q_cSBfEwTmimQ0yLPcsAM1Q-AaEQRoJsz4MtkQFUUAARDZmKLEL4K86zPAAF7xGs4KxhcsD2BQFTgvQwAGos6ixloyyuCAUVLrIQGE5gosxlwKMQDI5OtFwbbLNEyXOUoMDwBQHsgOChrdFu7iUHEFQAKTCFQn1h_s4JcBosAUG2lzfk1UDgnQ5MLbw1tZczygB1Ql3NWuYD7Uo8ha7I2chYDcklZ4YCmFowdh-BvzGKH8NCW9qTLBolxgAA6srqsQAC4F4L3YD99Q_w8Pnwfj5gFMgFdMgUKYCR0ovEBcAtUD0LGs0efwrjSPDmAAPQXzve8H20MSFACpiTuBsggMsJCyDbPhgIwcCtPAAQnAIbc0Xkaf8MIqCNSSufCAUs_xyyGMYReUsB4kH_PYeOEAha92cELIq_lQrwgbloduLdiFaDWKYchuQ34fy_llWw4CAJaGgQaWB8DZbxFMCglmaCMFYJwWoKA-CagvXTGtcUk9-5DygCrCgBht7SINDPf22cgTb13v8A-R8conxIGfReV8b7aNjPfF2Cjn5iIBngaCJCqBUJoakX4awAROJ8HQz-39PDkytOIS0kDKD0FXLwS4sDyb_G6AICgyCRK8HkODCgGJYgv3ahI7uPhlGD2HmrAhtFTLGUsMTIAA
+	⚠ 请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.1/files/dist/echarts.min.js"></script>
+  
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.1/files/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-gl/2/files/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-stat/latest/files/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-graph-modularity extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-graph-modularity/2/files/dist/echarts-graph-modularity.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.1/files/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'svg',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    var data = [
+  {
+    name: 'Remote\nSensing',
+    itemStyle: {
+      color: '#c94930'
+    },
+    children: [
+      {
+        name: 'Vehicle',
+        value: 1.1,
+        itemStyle: {
+          color: '#caa465'
+        }
+      },
+      {
+        name: 'Building',
+        value: 1.1,
+        itemStyle: {
+          color: '#dfbd7e'
+        }
+      },
+    ]
+  },
+  {
+    name: 'Video\nMonitoring',
+    itemStyle: {
+      color: '#ad213e'
+    },
+    children: [
+      {
+        name: 'Pedestrian',
+        value: 1.1,
+        itemStyle: {
+          color: '#794752'
+        }
+      },
+      {
+        name: 'Vehicle',
+        value: 1.1,
+        itemStyle: {
+          color: '#cc3d41'
+        }
+      },
+    ]
+  },
+    {
+    name: 'General\nScenarios',
+    itemStyle: {
+      color: '#a87b64'
+    },
+    children: [
+      {
+        name: 'Street View',
+        value: 1.1,
+        itemStyle: {
+          color: '#c78869'
+        }
+      },
+      {
+        name: 'Flora & Fauna',
+        value: 1.1,
+        itemStyle: {
+          color: '#d4ad12'
+        }
+      },
+    ]
+  },
+    {
+    name: 'Autonomous\nDriving',
+    itemStyle: {
+      color: '#e65832'
+    },
+    children: [
+      {
+        name: 'Traffic Signal',
+        value: 1,
+        itemStyle: {
+          color: '#d45a59'
+        }
+      },
+      {
+        name: 'Pedestrian',
+        value: 1,
+        itemStyle: {
+          color: '#da5c1f'
+        }
+      },
+      {
+        name: 'OOD Object',
+        value: 1,
+        itemStyle: {
+          color: '#ae341f'
+        }
+      },
+      {
+        name: 'Vehicle',
+        value: 1,
+        itemStyle: {
+          color: '#d78823'
+        }
+      },
+    ]
+  },
+  {
+    name: 'Dense\nText',
+    itemStyle: {
+      color: '#187a2f'
+    },
+    children: [
+      {
+        name: 'Books & Posters',
+        value: 1,
+        itemStyle: {
+          color: '#718933'
+        }
+      },
+      {
+        name: 'Daily Life Scenes',
+        value: 1,
+        itemStyle: {
+          color: '#a2b029'
+        }
+      },
+    ]
+  },
+  {
+    name: 'Large\nCharts',
+    itemStyle: {
+      color: '#039fb8'
+    },
+    children: [
+      {
+        name: 'Financial Charts',
+        value: 1,
+        itemStyle: {
+          color: '#80a89d'
+        }
+      },
+      {
+        name: 'Scientific Research',
+        value: 1,
+        itemStyle: {
+          color: '#7a9bae'
+        }
+      },
+    ]
+  },
+];
+option = {
+  textStyle:{
+    fontStyle: 'normal',
+    fontFamily: "serif",
+    fontSize: 17,
+    width: 5,
+    overflow: 'breakAll'
+  },
+  series: {
+    type: 'sunburst',
+    data: data,
+    radius: ['15%', '80%'],
+    sort: undefined,
+    emphasis: {
+      focus: 'ancestor'
+    },
+    levels: [
+      {
+      },
+      {
+        r0: '15%',
+        r: '35%',
+        itemStyle: {
+          borderWidth: 2,
+           borderRadius: 15,
+           opacity: 0.75,
+           shadowColor: 'grey',
+          // shadowBlur: 20
+        },
+        label: {
+          rotate: 'tangential',
+          align: 'center',
+          fontSize: 13,
+          fontWeight: "bold"
+        }
+      },
+      {
+        r0: '35%',
+        r: '70%',
+        label: {
+          align: 'center',
+          fontSize: 10,
+          fontWeight: "bold"
+        },
+        itemStyle: {
+          borderWidth: 4,
+           borderRadius: 21,
+           shadowColor: 'grey',
+          // shadowBlur: 40
+        },
+      },
+      {
+        r0: '70%',
+        r: '72%',
+        label: {
+          position: 'outside',
+          padding: 3,
+          silent: true
+        },
+        itemStyle: {
+          borderWidth: 5
+        }
+      }
+    ]
+  }
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>

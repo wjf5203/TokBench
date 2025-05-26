@@ -1,0 +1,477 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=sunburst-drink&renderer=svg&code=G4QwTgBAJiAuIQLwQNoCgIQN4c3zAdiALYCmAXBAOQDyAwgEoQCWBEAOmwCoAWpEAdWYAbKFQA0ufJgD0MiKGEBXChACMAOjWTpeZrFLEAyrACew1Tl34AxgHthdsJSoBiAEZqALFACsAdiopaQBfHWsbHhEoMFICSnRrPCskvCIyFzo7AngbWAgASQIAMydiOGZsiWCkxRVKbRrrfUMTc0smpPtHZ2pXG38ADgBOAGYANiDUvBDOmfCklOn01SoABTA7KCU8iAAyCABBKGBSMFhmAGdDONhq6cw61UaHlgNjMwtKJYfupxdXIMbAAmYbAmxTB6zaZhOaYH5JFYuApQW76UyFEplCpVBapJ4NPFJFofdrfOHSP69NykALjYGkSEwimw6YI6xI6gAITsdgA1uIIABZEAAB32EDWdkuBjA9weBPUROa7zaX2wFNsDn-fSgUC8Nl8aiZqWhpuV-HZuk5VCMzAA5kR7fwDjRYHxIFxSAAPO4W6SKl4PElqjqvTBUgEgNTjQ0gE1JM2J_3wzUQG1GGxxfgMUj2R36SoEeXTQMpvSqz5h8ORvoAUV8dCbdAT1iTbfLVukNroPHAIDyZ0uEAAqgRUWAZSBx6x7SX8SBlM9y5gQ1XyeGILW3HWAAx0fe71u6dsnuYAXSarOkXZtueIdgMECMcUus_n-DkCkX9XUWn9a5khq0zbq4eoGkax4QNeuiRNEsTxKgFJdvgNo0O4ABWeb5FkSg5O-K7fkuhJpoB6ooZS2rUq4oykLuoxqIEaanqEnZphmooVIuEC5sIOIEJcUSih-1hlqRlZARRWo9ACpD0sM4zDFB-AsSpbGvD2VE8XmdgFhcuJpmJrxkdWrygaQxTAlAEzKTMLLlpeJ7KreJCrAAIswID2mAJAcAQXAgO4FgibI8iBv-cwmRuqTmeMviDKMwJQTBNZRKICEJMh7GuS4HleT5xCSmcWaivpxaEUZwYSeRaYRlRAL6r4IC-EpzH2VlGk5dQAVBfwazFaQpVFiFAY_su4mtOuwE1vVfQgKQoxeGoxS2ZgqnzB1Dw9ouNhKHxZUQAAFD1FgAJQjfglXTFF01mbNO6-A2TardB7VstlGTUHQO17fxR15d5JDnRVY0kcZ1Wmb892uHue4Hi961repW1dVQWTEJxYBXEW_2eYDxDA4ZoNKhNpI1ZuoHNnQwyta8iPQcjyyo-jmPY9kR0naQhOvFdqQ3VJeCU4egxHm1MKM6kNoAGJOHmIAyrOuP5UDF14LzxIQ9Fd0yX0XLAnr4yTGL5qbUzn1UDLsQ2PLFwEPaHOBWdquPMTQbXZrt1QzrD1PS2xvJhSjmsU0Lnm4cSiwNkdgPkow6cG5WPAARcxfuFbvSPzFKgSAgz-O44xeMlhG2GlMRxJl72debKJomYRVgCVZXO0Rv7pxrk2SbVW7QwMgyDIpCNvakAs2gAaqQUQ2BYwqPsNIPEST4Md-TM3e2BXggFAahJf7Ham5LqNCntFwALTj5P09CrPBk867hGZxT0PDH4XijKMg_i_viKo_1qIylj04Z5N3nq3e-HsBZ1TXjYEYxQEofxNpXFG5sj7CFPr_Ug_9PJsCvsAomC824qmXpDEC0N3DuH8AXCEu8nJfw5KjLgPlijFGYDYZ8DoiDCGburQhZNiExWhopYE0ZaZQiHosD6qx0JYV2LhfCdsuF31JqGLWXsdRuC8P4Xc4xdyF2ocHRBZtVi8X4oJZg4pDp1mBFwbmCpFFL14Sokha8qYNngQHAxB9zbGLKqY8xljR42NLHYqqRDHH8LXrDXcUspZuL3h47-XjSD7SLL4o6NBgQ0ECQufBYDQmeycWo1wVNomxJofEuhiTknZFSRY4Eawsm1GCe7PJEDu5rxFiLEpei1K0OtKjO0jpuKHFgAYfCN9bE5KUVNVpQsDxdLpmI6wI9UZ1ntHYTEozcG30mfY5R-TwmFOKTE7pG1yl9PNugzBgCiibLnng0BUzO6P2cYeeZojP5nO7KjceYAL78BuWicZQSdkhIcfsroT8abDDecyD5qQg49N0KHVYo9mConWZwK-BB9BOGTkkVOrsIrtzBRRUC7hdzDH8G_IuXc4LpXLkhT5qFvkTxYdPWRts5wgPGrs6ZtKn5QHcMCchpT9HDwkS4c-bL-B1m9FcUZWYFEguaSS_l7T3BAmGKLBZcL8C9K-ebKVU9-AABk7DWy2RMh5vKnmr0Ke4UgQqKGisReKquqxLmwAAWwDleKrU8tBXsmZT8hiDA0S605bqkEetIH_L1WCICyvlXERV3KwaBr5c8wp_gvBeDou_E5SN9XMvNlkHo2l8zYstcC61GbbXa0KSAUYTbxgrULQzYtaRUY0CxrcP6_UG6DWrdk2tKqg1qsKTYYY7h4oFp1QgqNhiXAoNPnQPilxhy-vkWmxedaV4Nuog2I9vgI1FqZV26uORAVsA2LGlhw7GnKr5uAidh7dyRNPR289hBu2YWwpKTYoozhmCVaO59LTX0Aips9dtKVdBB1hJeOwQ12bIBSAYX0yifilByHsqgBBsScLxDh2AUsSAiFMJQAARNcLGxQqPEeyLAO0AAvZ4_g8QAHc0XukoL4PEdhThgGKI4TjLh3CxBAHyQ4whOG4GvLR5gGCVFmCAy4S4eF3BKEnH6YIMB4CUH0yAPEPkoDMFjgkKgahfAAFIJDUBFnZ88eJLhOFgJQPCqJmEEFjXiQwoo-xvkuGE0ou1gvUGnFmGUTgTQpWCBYU4whwuJGkCHK8zk5hgF3C4NQu47P-mpF4WzI0H6pHcE4CcQgoC8YgMCFc5WwATgYJvcz4Xcvli_Mhgc6JKC7g0P4fjFJBKbzsJxstajvKkFMKrL8w2oCja5MoXowJdxzDg3gPiDrhBhM_PITY8ADAuHgHbNEi5VaLnYS4LMV65TlhI6x54g3pgkYEKQB0PB3MQCo-V0QVG1vpbS0kLLLgiv5cyzl3ceWRqbaSTtvAF3HRXduGcVW93mBsYaF4O7THXvvc-99hwUA_vuJ4eO6YDXKs8Z4JQUY9WKtnGa2ZiztXdwrjm6N8b1JJvTY6_IdnnHFvacoF4VbJPXWWky9l6gBcwdA5cIpWX1gYfbfBXgUU0pCzZBcHYCOb5USq04nqWcvXse4fR88LHQ2RC3EoF6lQpvYC4_tB96jP2idrYAi-8n9OwBVZq3VikFOGcteZ-1obfZ5tjfutz1WFJZsR4W0thoou2xXmCAhtAIQADcQA
+	⚠ 请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container1" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.1/files/dist/echarts.min.js"></script>
+  
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.1/files/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-gl/2/files/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-stat/latest/files/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-graph-modularity extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-graph-modularity/2/files/dist/echarts-graph-modularity.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.1/files/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container1');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'svg',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    var data = [
+  {
+        name: 'OCR in \n The Wild',
+        // value: 1.1,
+        itemStyle: {
+          color: '#b14d57'
+        },
+        children: [
+          {
+            name: 'Contact Information',
+            value: 1,
+            itemStyle: {
+              color: '#c78936'
+            }
+          },
+          {
+            name: 'Product & Advertisement',
+            value: 1,
+            itemStyle: {
+              color: '#8c292c'
+            }
+          },
+          {
+            name: 'Identity Information',
+            value: 1,
+            itemStyle: {
+              color: '#e5762e'
+            }
+          },
+          {
+            name: 'Book, Map & Poster',
+            value: 1,
+            itemStyle: {
+              color: '#dd4c51'
+            }
+          },
+          {
+            name: 'Signage & Other Text',
+            value: 1,
+            itemStyle: {
+              color: '#a16c5a'
+            }
+          },
+          {
+            name: 'Scene Recognition',
+            value: 1,
+            itemStyle: {
+              color: '#E5CCCC'
+            }
+          },
+          {
+            name: 'Characters Understanding',
+            value: 1,
+            itemStyle: {
+              color: '#E0C0C0'
+            }
+          }
+        ]
+      },
+      {
+        name: 'Remote Sensing',
+        // value: 1.1,
+        itemStyle: {
+          color: '#dd4c51'
+        },
+        children: [
+          {
+            name: 'Object Counting',
+            value: 1,
+            itemStyle: {
+              color: '#3e0317'
+            }
+          },
+          {
+            name: 'Spatial Relationship',
+            value: 1,
+            itemStyle: {
+              color: '#e62969'
+            }
+          },
+          {
+            name: 'Color Recognition',
+            value: 1,
+            itemStyle: {
+              color: '#ef2d36'
+            }
+          },
+          ]
+      },
+      {
+        name: 'Diagram \nTable',
+        // value: 1.1,
+        itemStyle: {
+          color: '#e65832'
+        },
+                children: [
+          {
+            name: 'Diagram Perception',
+            value: 1,
+            itemStyle: {
+              color: '#d45a59'
+            }
+          },
+          {
+            name: 'Table Perception',
+            value: 1,
+            itemStyle: {
+              color: '#ae341f'
+            }
+          },
+          {
+            name: 'Calculation (Table)',
+            value: 1,
+            itemStyle: {
+              color: '#E5E5CC'
+            }
+          },
+          {
+            name: 'Calculation (Diagram)',
+            value: 1,
+            itemStyle: {
+              color: '#E0E0C0'
+            }
+          },
+          {
+            name: 'Comparision (Diagram)',
+            value: 1,
+            itemStyle: {
+              color: '#CCCC99'
+            }
+          },
+          {
+            name: 'Comparision (Table)',
+            value: 1,
+            itemStyle: {
+              color: '#C0C080'
+            }
+          },
+          {
+            name: 'Forecasting (Diagram)',
+            value: 1,
+            itemStyle: {
+              color: '#B2B266'
+            }
+          },
+          {
+            name: 'Forecasting (Table)',
+            value: 1,
+            itemStyle: {
+              color: '#E5E5CC'
+            }
+          },
+          ]
+      },
+      {
+        name: 'Autonomous \nDriving',
+        // value: 1.1,
+        itemStyle: {
+          color: '#a87b64'
+        },
+                children: [
+          {
+            name: 'Identity Perception',
+            value: 1,
+            itemStyle: {
+              color: '#c78869'
+            }
+          },
+          {
+            name: 'Vehicle Motion',
+            value: 1,
+            itemStyle: {
+              color: '#d4ad12'
+            }
+          },
+          {
+            name: 'Multi-Vehicle Motion',
+            value: 1,
+            itemStyle: {
+              color: '#9d5433'
+            }
+          },
+          {
+            name: 'Pedestrian Motion',
+            value: 1,
+            itemStyle: {
+              color: '#c89f83'
+            }
+          },
+          {
+            name: 'Multi-Pedestrian Motion',
+            value: 1,
+            itemStyle: {
+              color: '#bb764c'
+            }
+          },
+          {
+            name: 'Traffic Signal',
+            value: 1,
+            itemStyle: {
+              color: '#692a19'
+            }
+          },
+          {
+            name: 'Object Counting',
+            value: 1,
+            itemStyle: {
+              color: '#470604'
+            }
+          },
+          {
+            name: 'Relationship (E2T)',
+            value: 1,
+            itemStyle: {
+              color: '#CCCCE5'
+            }
+          },
+          {
+            name: 'Relationship (E2V)',
+            value: 1,
+            itemStyle: {
+              color: '#E0E0FF'
+            }
+          },
+          {
+            name: 'Relationship (O2O)',
+            value: 1,
+            itemStyle: {
+              color: '#CCCCFF'
+            }
+          },
+          {
+            name: 'Relationship (E2P)',
+            value: 1,
+            itemStyle: {
+              color: '#8080FF'
+            }
+          },
+          {
+            name: 'Signal Attention',
+            value: 1,
+            itemStyle: {
+              color: '#C0C0FF'
+            }
+          },
+          {
+            name: 'Ego Intention',
+            value: 1,
+            itemStyle: {
+              color: '#CCCCFF'
+            }
+          },
+          {
+            name: 'Pedestrian Intention',
+            value: 1,
+            itemStyle: {
+              color: '#C0C0FF'
+            }
+          },
+          {
+            name: 'Vehicle Intention',
+            value: 1,
+            itemStyle: {
+              color: '#9999FF'
+            }
+          },
+          ]
+      },
+      {
+        name: 'Video \nMonitoring',
+        // value: 1.1,
+        itemStyle: {
+          color: '#b09733'
+        },
+              children: [
+          {
+            name: 'Vehicle Counting',
+            value: 1,
+            itemStyle: {
+              color: '#9db2b7'
+            }
+          },
+          {
+            name: 'Vehicle Existence',
+            value: 1,
+            itemStyle: {
+              color: '#8b8c90'
+            }
+          },
+      
+          {
+            name: 'Vehicle Location',
+            value: 1,
+            itemStyle: {
+              color: '#beb276'
+            }
+          },
+          {
+            name: 'Pedestrian Counting',
+            value: 1,
+            itemStyle: {
+              color: '#978847'
+            }
+          },
+          {
+            name: 'Pedestrian Existence',
+            value: 1,
+            itemStyle: {
+              color: '#744e03'
+            }
+          },
+          {
+            name: 'Color Recognition',
+            value: 1,
+            itemStyle: {
+              color: '#a3a36f'
+            }
+          },
+          {
+            name: 'Orientation Perception',
+            value: 1,
+            itemStyle: {
+              color: '#c9b583'
+            }
+          },
+          {
+            name: 'Multi-Class Counting',
+            value: 1,
+            itemStyle: {
+              color: '#E5E5E5'
+            }
+          },
+          {
+            name: 'Intention Prediction',
+            value: 1,
+            itemStyle: {
+              color: '#E0E0E0'
+            }
+          },
+          {
+            name: 'Object Property',
+            value: 1,
+            itemStyle: {
+              color: '#CCCCCC'
+            }
+          },
+          ]
+  },
+]
+option = {
+  textStyle:{
+    fontStyle: 'normal',
+    fontFamily: "serif",
+    fontSize: 17,
+    width: 5,
+    overflow: 'breakAll'
+  },
+  series: {
+    type: 'sunburst',
+    data: data,
+    radius: ['15%', '80%'],
+    sort: undefined,
+    emphasis: {
+      focus: 'ancestor'
+    },
+    
+    levels: [
+      
+      {
+      },
+      {
+        r0: '10%',
+        r: '45%',
+        itemStyle: {
+          borderWidth: 2,
+           borderRadius: 10,
+          // opacity: 0.75,
+          shadowColor: 'grey',
+          // shadowBlur: 20
+        },
+        label: {
+          // rotate: 'tangential',
+          align: 'center',
+          fontSize: 15,
+          fontWeight: "bold"
+        }
+      },
+      {
+        r0: '45%',
+        r: '100%',
+        label: {
+          align: 'center',
+          fontSize: 14,
+          fontWeight: "bold"
+        },
+        itemStyle: {
+          borderWidth: 3,
+           borderRadius: 20,
+           shadowColor: 'grey',
+          // shadowBlur: 40
+        },
+      },
+      {
+        r0: '64%',
+        r: '69%',
+        label: {
+          position: 'outside',
+          padding: 0,
+          fontSize: 14,
+          silent: true,
+          fontWeight: "bold"
+        },
+        itemStyle: {
+          borderWidth: 2,
+          borderRadius: 10,
+          shadowColor: 'grey',
+          
+          // shadowBlur: 10
+        }
+      }
+    ]
+  }
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
