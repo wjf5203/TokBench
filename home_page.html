@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> TokBench </title>
-  <link rel="icon" href="./static/images/logo.jpg">
+  <link rel="icon" href="./static/images/logo.png">
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -91,7 +91,7 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title is-bold">
-            <img src="static/images/logo.jpg" style="width:1.8em;vertical-align: middle" alt="Logo"/>
+            <img src="static/images/logo.png" style="width:1.8em;vertical-align: middle" alt="Logo"/>
             <span class="tokbench" style="vertical-align: middle;text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)">TokBench</span>
             </h1>
           <h2 class="subtitle is-3 publication-subtitle ", style="width: 100%;margin-bottom: 20px;">
@@ -99,19 +99,20 @@
           </h2>
           
           <div class="is-size-5 publication-authors", style="width: 100%; margin: 15px auto;", >
-            <span class="author-block"><a href="https://wjf5203.github.io/">Junfeng Wu</a>,</span>
-            <span class="author-block"><a href="https://openreview.net/profile?id=~Dongliang_Luo2">Dongliang Luo></a>,</span>   
+            <span class="author-block"><a href="https://wjf5203.github.io/">Junfeng Wu*</a>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?hl=zh-CN&user=irTb0-UAAAAJ">Dongliang Luo*</a>,</span>   
             <span class="author-block"><a href="https://weizhi-zhao.github.io/">Weizhi Zhao</a>,</span>
-            <span class="author-block">Zhihao Xie,</span>   
-            <span class="author-block">Yuanhao Wang,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Zhihao_Xie1">Zhihao Xie,</span>   
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Yuanhao_Wang6">Yuanhao Wang,</span>
             <span class="author-block"><a href="https://github.com/ProvenceStar">Junyi Li</a>,</span>
             <span class="author-block"><a href="https://www.researchgate.net/profile/Xie-Xudong">Xudong Xie</a>,</span>  
             <span class="author-block"><a href="http://faculty.hust.edu.cn/liuyuliang/zh_CN/index.htm">Yuliang Liu</a>,</span>
-            <span class="author-block"><a href="http://vlrlab.aia.hust.edu.cn/">Xiang Bai</a><sup><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>†</mo></math></sup></span>
+            <span class="author-block"><a href="http://vlrlab.aia.hust.edu.cn/">Xiang Bai</a></span>
         </div>
 
           <div class="is-size-5 publication-authors">
             <span class="author-block">Huazhong University of Science and Technology</span>
+            <span class="eql-cntrb"><small><br><sup>*</sup>Equal contribution.</small></span>
             <!-- <br><span class="paper-block"><b style="color:#f41c1c">Submitted to NeurIPS 2025 Dataset & Benchmark Track</b></span> -->
             <!-- <span class="paper-block"><b style="color:#f41c1c">ICLR 2024 Oral</b> (85 in 7304, 1.2%)</span> -->
           </div>
@@ -324,26 +325,27 @@
                     <th rowspan="3" style="vertical-align: middle; width: 30px;"><strong>#</strong></th>
                     <th rowspan="1" style="vertical-align: middle; width: 280px; white-space: nowrap;"><strong>Method</strong></th>
                     <th rowspan="1" style="vertical-align: middle; width: 30px;"><strong>Type</strong></th>
+                    <th rowspan="1" style="vertical-align: middle; width: 30px;"><strong>Factor</strong></th>
                     <!-- <th colspan="1" style="vertical-align: middle; width: 30; font-style: italic;"><strong>Overall</strong></th> -->
                     <th colspan="4" style="vertical-align: middle; width: 300px;"><strong>T-ACC↑</strong></th>
                     <th colspan="4" style="vertical-align: middle; width: 280px;"><strong>T-NED↑</strong></th>
                     <th colspan="4" style="vertical-align: middle; width: 280px;"><strong>F-Sim↑</strong></th>
                 </tr>
                 <tr>
-                    <th colspan="2"><strong>Task Split</strong></th>
+                    <th colspan="3"><strong>Task Split</strong></th>
                     <!-- <th style="font-style: italic;"><strong>Avg</strong></th> -->
                     <th><strong>Small</strong></th>
                     <th><strong>Medium</strong></th>
                     <th><strong>Large</strong></th>
-                    <th><strong>Mean</strong></th>
+                    <th><strong style="color: red;">Mean</strong></th>
                     <th><strong>Small</strong></th>
                     <th><strong>Medium</strong></th>
                     <th><strong>Large</strong></th>
-                    <th><strong>Mean</strong></th>
+                    <th><strong style="color: red;">Mean</strong></th>
                     <th><strong>Small</strong></th>
                     <th><strong>Medium</strong></th>
                     <th><strong>Large</strong></th>
-                    <th><strong>Mean</strong></th>
+                    <th><strong style="color: red;">Mean</strong></th>
                 </tr>
             </thead>
             <thead>
@@ -355,6 +357,7 @@
                 <tr>
                     <td style="vertical-align: middle;"></td>
                     <td style="vertical-align: middle; width: 30px;"><b>Resize</b></td>
+                    <td style="vertical-align: middle;">-</td>
                     <td style="vertical-align: middle;">-</td>
                     <!-- <td style="vertical-align: middle;">96.53/0.82</td> -->
                     <td style="vertical-align: middle;">86.05</td>
@@ -371,102 +374,6 @@
                     <td style="vertical-align: middle;">0.93</td>
                 </tr>
                 <tr>
-                    <td style="vertical-align: middle;"></td>
-                    <td style="vertical-align: middle; width: 30px;">
-                        <b>
-                            <a href="https://github.com/CompVis/taming-transformers" class="ext-link" style="font-size: 16px; margin-left: 5px;">
-                                VQGAN
-                            </a>
-                        </b>
-                    </td>
-                    <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
-                    <!-- <td style="vertical-align: middle;">-</td> -->
-                    <td style="vertical-align: middle;">0.05</td>
-                    <td style="vertical-align: middle;">0.12</td>
-                    <td style="vertical-align: middle;">3.14</td>
-                    <td style="vertical-align: middle;">1.10</td>
-                    <td style="vertical-align: middle;">4.34</td>
-                    <td style="vertical-align: middle;">5.33</td>
-                    <td style="vertical-align: middle;">15.00</td>
-                    <td style="vertical-align: middle;">8.22</td>
-                    <td style="vertical-align: middle;">0.05</td>
-                    <td style="vertical-align: middle;">0.08</td>
-                    <td style="vertical-align: middle;">0.17</td>
-                    <td style="vertical-align: middle;">0.10</td>
-                </tr>
-                <tr>
-                  <td style="vertical-align: middle;"></td>
-                  <td style="vertical-align: middle; width: 30px;">
-                      <b>
-                          <a href="https://github.com/facebookresearch/chameleon" class="ext-link" style="font-size: 16px; margin-left: 5px;">
-                            Chameleon
-                          </a>
-                      </b>
-                  </td>
-                  <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
-                  <!-- <td style="vertical-align: middle;">-</td> -->
-                  <td style="vertical-align: middle;">0.11</td>
-                  <td style="vertical-align: middle;">0.31</td>
-                  <td style="vertical-align: middle;">8.19</td>
-                  <td style="vertical-align: middle;">2.87</td>
-                  <td style="vertical-align: middle;">4.67</td>
-                  <td style="vertical-align: middle;">6.65</td>
-                  <td style="vertical-align: middle;">24.91</td>
-                  <td style="vertical-align: middle;">12.08</td>
-                  <td style="vertical-align: middle;">0.08</td>
-                  <td style="vertical-align: middle;">0.15</td>
-                  <td style="vertical-align: middle;">0.30</td>
-                  <td style="vertical-align: middle;">0.18</td>
-              </tr>
-              <tr>
-                <td style="vertical-align: middle;"></td>
-                <td style="vertical-align: middle; width: 30px;">
-                    <b>
-                        <a href="https://github.com/FoundationVision/LlamaGen" class="ext-link" style="font-size: 16px; margin-left: 5px;">
-                          LlamaGen
-                        </a>
-                    </b>
-                </td>
-                <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
-                <!-- <td style="vertical-align: middle;">-</td> -->
-                <td style="vertical-align: middle;">0.16</td>
-                <td style="vertical-align: middle;">0.44</td>
-                <td style="vertical-align: middle;">12.25</td>
-                <td style="vertical-align: middle;">4.28</td>
-                <td style="vertical-align: middle;">5.41</td>
-                <td style="vertical-align: middle;">7.50</td>
-                <td style="vertical-align: middle;">31.40</td>
-                <td style="vertical-align: middle;">14.77</td>
-                <td style="vertical-align: middle;">0.07</td>
-                <td style="vertical-align: middle;">0.11</td>
-                <td style="vertical-align: middle;">0.26</td>
-                <td style="vertical-align: middle;">0.15</td>
-            </tr>
-            <tr>
-              <td style="vertical-align: middle;"></td>
-              <td style="vertical-align: middle; width: 30px;">
-                  <b>
-                      <a href="https://github.com/FoundationVision/VAR" class="ext-link" style="font-size: 16px; margin-left: 5px;">
-                        VAR
-                      </a>
-                  </b>
-              </td>
-              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
-              <!-- <td style="vertical-align: middle;">-</td> -->
-              <td style="vertical-align: middle;">1.24</td>
-              <td style="vertical-align: middle;">6.72</td>
-              <td style="vertical-align: middle;">39.26</td>
-              <td style="vertical-align: middle;">15.74</td>
-              <td style="vertical-align: middle;">10.89</td>
-              <td style="vertical-align: middle;">26.26</td>
-              <td style="vertical-align: middle;">65.42</td>
-              <td style="vertical-align: middle;">34.19</td>
-              <td style="vertical-align: middle;">0.10</td>
-              <td style="vertical-align: middle;">0.20</td>
-              <td style="vertical-align: middle;">0.41</td>
-              <td style="vertical-align: middle;">0.23</td>
-            </tr>
-            <tr>
               <td style="vertical-align: middle;"></td>
               <td style="vertical-align: middle; width: 30px;">
                   <b>
@@ -476,6 +383,7 @@
                   </b>
               </td>
               <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <td style="vertical-align: middle;">1D</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;">0.05</td>
               <td style="vertical-align: middle;">0.06</td>
@@ -500,6 +408,7 @@
                   </b>
               </td>
               <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <td style="vertical-align: middle;">1D</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;">0.55</td>
               <td style="vertical-align: middle;">2.24</td>
@@ -515,6 +424,106 @@
               <td style="vertical-align: middle;">0.15</td>
             </tr>
             <tr>
+                <td style="vertical-align: middle;"></td>
+                <td style="vertical-align: middle; width: 30px;">
+                    <b>
+                        <a href="https://github.com/CompVis/taming-transformers" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                            VQGAN
+                        </a>
+                    </b>
+                </td>
+                <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+                <td style="vertical-align: middle;">16&times</td>
+                <!-- <td style="vertical-align: middle;">-</td> -->
+                <td style="vertical-align: middle;">0.05</td>
+                <td style="vertical-align: middle;">0.12</td>
+                <td style="vertical-align: middle;">3.14</td>
+                <td style="vertical-align: middle;">1.10</td>
+                <td style="vertical-align: middle;">4.34</td>
+                <td style="vertical-align: middle;">5.33</td>
+                <td style="vertical-align: middle;">15.00</td>
+                <td style="vertical-align: middle;">8.22</td>
+                <td style="vertical-align: middle;">0.05</td>
+                <td style="vertical-align: middle;">0.08</td>
+                <td style="vertical-align: middle;">0.17</td>
+                <td style="vertical-align: middle;">0.10</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: middle;"></td>
+                <td style="vertical-align: middle; width: 30px;">
+                    <b>
+                        <a href="https://github.com/facebookresearch/chameleon" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                          Chameleon
+                        </a>
+                    </b>
+                </td>
+                <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+                <td style="vertical-align: middle;">16&times</td>
+                <!-- <td style="vertical-align: middle;">-</td> -->
+                <td style="vertical-align: middle;">0.11</td>
+                <td style="vertical-align: middle;">0.31</td>
+                <td style="vertical-align: middle;">8.19</td>
+                <td style="vertical-align: middle;">2.87</td>
+                <td style="vertical-align: middle;">4.67</td>
+                <td style="vertical-align: middle;">6.65</td>
+                <td style="vertical-align: middle;">24.91</td>
+                <td style="vertical-align: middle;">12.08</td>
+                <td style="vertical-align: middle;">0.08</td>
+                <td style="vertical-align: middle;">0.15</td>
+                <td style="vertical-align: middle;">0.30</td>
+                <td style="vertical-align: middle;">0.18</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: middle;"></td>
+                <td style="vertical-align: middle; width: 30px;">
+                    <b>
+                        <a href="https://github.com/FoundationVision/LlamaGen" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                          LlamaGen
+                        </a>
+                    </b>
+                </td>
+                <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+                <td style="vertical-align: middle;">16&times</td>
+                <!-- <td style="vertical-align: middle;">-</td> -->
+                <td style="vertical-align: middle;">0.16</td>
+                <td style="vertical-align: middle;">0.44</td>
+                <td style="vertical-align: middle;">12.25</td>
+                <td style="vertical-align: middle;">4.28</td>
+                <td style="vertical-align: middle;">5.41</td>
+                <td style="vertical-align: middle;">7.50</td>
+                <td style="vertical-align: middle;">31.40</td>
+                <td style="vertical-align: middle;">14.77</td>
+                <td style="vertical-align: middle;">0.07</td>
+                <td style="vertical-align: middle;">0.11</td>
+                <td style="vertical-align: middle;">0.26</td>
+                <td style="vertical-align: middle;">0.15</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/FoundationVision/VAR" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        VAR
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <td style="vertical-align: middle;">16&times</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">1.24</td>
+              <td style="vertical-align: middle;">6.72</td>
+              <td style="vertical-align: middle;">39.26</td>
+              <td style="vertical-align: middle;">15.74</td>
+              <td style="vertical-align: middle;">10.89</td>
+              <td style="vertical-align: middle;">26.26</td>
+              <td style="vertical-align: middle;">65.42</td>
+              <td style="vertical-align: middle;">34.19</td>
+              <td style="vertical-align: middle;">0.10</td>
+              <td style="vertical-align: middle;">0.20</td>
+              <td style="vertical-align: middle;">0.41</td>
+              <td style="vertical-align: middle;">0.23</td>
+            </tr>
+            <tr>
               <td style="vertical-align: middle;"></td>
               <td style="vertical-align: middle; width: 30px;">
                   <b>
@@ -524,6 +533,7 @@
                   </b>
               </td>
               <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <td style="vertical-align: middle;">16&times</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;">0.16</td>
               <td style="vertical-align: middle;">0.19</td>
@@ -542,36 +552,13 @@
               <td style="vertical-align: middle;"></td>
               <td style="vertical-align: middle; width: 30px;">
                   <b>
-                      <a href="https://github.com/FoundationVision/OmniTokenizer" class="ext-link" style="font-size: 16px; margin-left: 5px;">
-                        OmniTokenizer
-                      </a>
-                  </b>
-              </td>
-              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
-              <!-- <td style="vertical-align: middle;">-</td> -->
-              <td style="vertical-align: middle;">2.14</td>
-              <td style="vertical-align: middle;">8.46</td>
-              <td style="vertical-align: middle;">51.28</td>
-              <td style="vertical-align: middle;">20.63</td>
-              <td style="vertical-align: middle;">13.24</td>
-              <td style="vertical-align: middle;">30.50</td>
-              <td style="vertical-align: middle;">73.67</td>
-              <td style="vertical-align: middle;">39.14</td>
-              <td style="vertical-align: middle;">0.15</td>
-              <td style="vertical-align: middle;">0.34</td>
-              <td style="vertical-align: middle;">0.61</td>
-              <td style="vertical-align: middle;">0.37</td>
-            </tr>
-            <tr>
-              <td style="vertical-align: middle;"></td>
-              <td style="vertical-align: middle; width: 30px;">
-                  <b>
                       <a href="https://github.com/omerbt/TokenFlow" class="ext-link" style="font-size: 16px; margin-left: 5px;">
                         TokenFlow
                       </a>
                   </b>
               </td>
               <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <td style="vertical-align: middle;">16&times</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;">0.28</td>
               <td style="vertical-align: middle;">1.62</td>
@@ -590,36 +577,13 @@
               <td style="vertical-align: middle;"></td>
               <td style="vertical-align: middle; width: 30px;">
                   <b>
-                      <a href="https://github.com/FoundationVision/UniTok" class="ext-link" style="font-size: 16px; margin-left: 5px;">
-                        UniTok
-                      </a>
-                  </b>
-              </td>
-              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
-              <!-- <td style="vertical-align: middle;">-</td> -->
-              <td style="vertical-align: middle;"><strong>13.53</strong></td>
-              <td style="vertical-align: middle;"><strong>42.87</strong></td>
-              <td style="vertical-align: middle;"><strong>77.35</strong></td>
-              <td style="vertical-align: middle;"><strong>44.59</strong></td>
-              <td style="vertical-align: middle;"><strong>38.73</strong></td>
-              <td style="vertical-align: middle;"><strong>68.51</strong></td>
-              <td style="vertical-align: middle;"><strong>90.27</strong></td>
-              <td style="vertical-align: middle;"><strong>65.84</strong></td>
-              <td style="vertical-align: middle;">0.15</td>
-              <td style="vertical-align: middle;">0.32</td>
-              <td style="vertical-align: middle;">0.58</td>
-              <td style="vertical-align: middle;">0.35</td>
-            </tr>
-            <tr>
-              <td style="vertical-align: middle;"></td>
-              <td style="vertical-align: middle; width: 30px;">
-                  <b>
                       <a href="https://github.com/TencentARC/SEED-Voken" class="ext-link" style="font-size: 16px; margin-left: 5px;">
                         O-MAGVIT2
                       </a>
                   </b>
               </td>
               <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <td style="vertical-align: middle;">16&times</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;">0.34</td>
               <td style="vertical-align: middle;">1.49</td>
@@ -644,6 +608,7 @@
                   </b>
               </td>
               <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <td style="vertical-align: middle;">16&times</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;">0.80</td>
               <td style="vertical-align: middle;">3.17</td>
@@ -662,12 +627,63 @@
               <td style="vertical-align: middle;"></td>
               <td style="vertical-align: middle; width: 30px;">
                   <b>
+                      <a href="https://github.com/FoundationVision/UniTok" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        UniTok
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <td style="vertical-align: middle;">16&times</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;"><strong>13.53</strong></td>
+              <td style="vertical-align: middle;"><strong>42.87</strong></td>
+              <td style="vertical-align: middle;"><strong>77.35</strong></td>
+              <td style="vertical-align: middle;"><strong>44.59</strong></td>
+              <td style="vertical-align: middle;"><strong>38.73</strong></td>
+              <td style="vertical-align: middle;"><strong>68.51</strong></td>
+              <td style="vertical-align: middle;"><strong>90.27</strong></td>
+              <td style="vertical-align: middle;"><strong>65.84</strong></td>
+              <td style="vertical-align: middle;">0.15</td>
+              <td style="vertical-align: middle;">0.32</td>
+              <td style="vertical-align: middle;">0.58</td>
+              <td style="vertical-align: middle;">0.35</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
+                      <a href="https://github.com/FoundationVision/OmniTokenizer" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                        OmniTokenizer
+                      </a>
+                  </b>
+              </td>
+              <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <td style="vertical-align: middle;">8&times</td>
+              <!-- <td style="vertical-align: middle;">-</td> -->
+              <td style="vertical-align: middle;">2.14</td>
+              <td style="vertical-align: middle;">8.46</td>
+              <td style="vertical-align: middle;">51.28</td>
+              <td style="vertical-align: middle;">20.63</td>
+              <td style="vertical-align: middle;">13.24</td>
+              <td style="vertical-align: middle;">30.50</td>
+              <td style="vertical-align: middle;">73.67</td>
+              <td style="vertical-align: middle;">39.14</td>
+              <td style="vertical-align: middle;">0.15</td>
+              <td style="vertical-align: middle;">0.34</td>
+              <td style="vertical-align: middle;">0.61</td>
+              <td style="vertical-align: middle;">0.37</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;"></td>
+              <td style="vertical-align: middle; width: 30px;">
+                  <b>
                       <a href="https://github.com/FoundationVision/LlamaGen" class="ext-link" style="font-size: 16px; margin-left: 5px;">
                         LlamaGen(F8)
                       </a>
                   </b>
               </td>
               <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <td style="vertical-align: middle;">8&times</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;">4.39</td>
               <td style="vertical-align: middle;">17.86</td>
@@ -692,6 +708,7 @@
                   </b>
               </td>
               <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <td style="vertical-align: middle;">8&times</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;">9.33</td>
               <td style="vertical-align: middle;">34.16</td>
@@ -716,6 +733,7 @@
                   </b>
               </td>
               <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+              <td style="vertical-align: middle;">32&times</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;">1.42</td>
               <td style="vertical-align: middle;">5.16</td>
@@ -740,6 +758,7 @@
                   </b>
               </td>
               <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+              <td style="vertical-align: middle;">16&times</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;">6.92</td>
               <td style="vertical-align: middle;">28.25</td>
@@ -764,6 +783,7 @@
                   </b>
               </td>
               <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+              <td style="vertical-align: middle;">8&times</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;">6.94</td>
               <td style="vertical-align: middle;">24.83</td>
@@ -788,6 +808,7 @@
                   </b>
               </td>
               <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+              <td style="vertical-align: middle;">8&times</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;">36.26</td>
               <td style="vertical-align: middle;">72.18</td>
@@ -812,6 +833,7 @@
                   </b>
               </td>
               <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+              <td style="vertical-align: middle;">8&times</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;"><strong>50.69</strong></td>
               <td style="vertical-align: middle;"><strong>82.14</strong></td>
@@ -837,6 +859,7 @@
               <td style="vertical-align: middle;"></td>
               <td style="vertical-align: middle; width: 30px;"><b>Resize</b></td>
               <td style="vertical-align: middle;">-</td>
+              <td style="vertical-align: middle;">-</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;">92.51</td>
               <td style="vertical-align: middle;">98.18</td>
@@ -861,6 +884,7 @@
                   </b>
               </td>
               <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <td style="vertical-align: middle;">16&times</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;">0.15</td>
               <td style="vertical-align: middle;">0.76</td>
@@ -885,6 +909,7 @@
                   </b>
               </td>
               <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <td style="vertical-align: middle;">16&times</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;">0.60</td>
               <td style="vertical-align: middle;">2.67</td>
@@ -909,6 +934,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <td style="vertical-align: middle;">16&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">0.67</td>
             <td style="vertical-align: middle;">3.93</td>
@@ -933,6 +959,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <td style="vertical-align: middle;">16&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">3.71</td>
             <td style="vertical-align: middle;">20.59</td>
@@ -946,31 +973,7 @@
             <td style="vertical-align: middle;">0.24</td>
             <td style="vertical-align: middle;">0.57</td>
             <td style="vertical-align: middle;">0.32</td>
-          </tr>
-          <tr>
-            <td style="vertical-align: middle;"></td>
-            <td style="vertical-align: middle; width: 30px;">
-                <b>
-                    <a href="https://github.com/FoundationVision/OmniTokenizer" class="ext-link" style="font-size: 16px; margin-left: 5px;">
-                      OmniTokenizer
-                    </a>
-                </b>
-            </td>
-            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
-            <!-- <td style="vertical-align: middle;">-</td> -->
-            <td style="vertical-align: middle;">6.21</td>
-            <td style="vertical-align: middle;">38.33</td>
-            <td style="vertical-align: middle;">82.91</td>
-            <td style="vertical-align: middle;">42.48</td>
-            <td style="vertical-align: middle;">23.44</td>
-            <td style="vertical-align: middle;">65.99</td>
-            <td style="vertical-align: middle;">92.66</td>
-            <td style="vertical-align: middle;">60.70</td>
-            <td style="vertical-align: middle;">0.24</td>
-            <td style="vertical-align: middle;">0.45</td>
-            <td style="vertical-align: middle;">0.80</td>
-            <td style="vertical-align: middle;">0.50</td>
-          </tr>
+          </tr>   
           <tr>
             <td style="vertical-align: middle;"></td>
             <td style="vertical-align: middle; width: 30px;">
@@ -981,6 +984,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <td style="vertical-align: middle;">16&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">1.06</td>
             <td style="vertical-align: middle;">6.27</td>
@@ -999,36 +1003,13 @@
             <td style="vertical-align: middle;"></td>
             <td style="vertical-align: middle; width: 30px;">
                 <b>
-                    <a href="https://github.com/FoundationVision/UniTok" class="ext-link" style="font-size: 16px; margin-left: 5px;">
-                      UniTok
-                    </a>
-                </b>
-            </td>
-            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
-            <!-- <td style="vertical-align: middle;">-</td> -->
-            <td style="vertical-align: middle;">17.25</td>
-            <td style="vertical-align: middle;">51.86</td>
-            <td style="vertical-align: middle;">81.20</td>
-            <td style="vertical-align: middle;">50.10</td>
-            <td style="vertical-align: middle;">44.75</td>
-            <td style="vertical-align: middle;">76.28</td>
-            <td style="vertical-align: middle;">92.20</td>
-            <td style="vertical-align: middle;">71.08</td>
-            <td style="vertical-align: middle;">0.22</td>
-            <td style="vertical-align: middle;">0.36</td>
-            <td style="vertical-align: middle;">0.74</td>
-            <td style="vertical-align: middle;">0.44</td>
-          </tr>
-          <tr>
-            <td style="vertical-align: middle;"></td>
-            <td style="vertical-align: middle; width: 30px;">
-                <b>
                     <a href="https://github.com/TencentARC/SEED-Voken" class="ext-link" style="font-size: 16px; margin-left: 5px;">
                       O-MAGVIT2
                     </a>
                 </b>
             </td>
             <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <td style="vertical-align: middle;">16&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">1.40</td>
             <td style="vertical-align: middle;">9.51</td>
@@ -1053,6 +1034,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <td style="vertical-align: middle;">16&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">3.02</td>
             <td style="vertical-align: middle;">16.25</td>
@@ -1071,12 +1053,63 @@
             <td style="vertical-align: middle;"></td>
             <td style="vertical-align: middle; width: 30px;">
                 <b>
+                    <a href="https://github.com/FoundationVision/UniTok" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      UniTok
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <td style="vertical-align: middle;">16&times</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">17.25</td>
+            <td style="vertical-align: middle;">51.86</td>
+            <td style="vertical-align: middle;">81.20</td>
+            <td style="vertical-align: middle;">50.10</td>
+            <td style="vertical-align: middle;">44.75</td>
+            <td style="vertical-align: middle;">76.28</td>
+            <td style="vertical-align: middle;">92.20</td>
+            <td style="vertical-align: middle;">71.08</td>
+            <td style="vertical-align: middle;">0.22</td>
+            <td style="vertical-align: middle;">0.36</td>
+            <td style="vertical-align: middle;">0.74</td>
+            <td style="vertical-align: middle;">0.44</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/FoundationVision/OmniTokenizer" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      OmniTokenizer
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <td style="vertical-align: middle;">8&times</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">6.21</td>
+            <td style="vertical-align: middle;">38.33</td>
+            <td style="vertical-align: middle;">82.91</td>
+            <td style="vertical-align: middle;">42.48</td>
+            <td style="vertical-align: middle;">23.44</td>
+            <td style="vertical-align: middle;">65.99</td>
+            <td style="vertical-align: middle;">92.66</td>
+            <td style="vertical-align: middle;">60.70</td>
+            <td style="vertical-align: middle;">0.24</td>
+            <td style="vertical-align: middle;">0.45</td>
+            <td style="vertical-align: middle;">0.80</td>
+            <td style="vertical-align: middle;">0.50</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
                     <a href="https://github.com/FoundationVision/LlamaGen" class="ext-link" style="font-size: 16px; margin-left: 5px;">
                       LlamaGen(F8)
                     </a>
                 </b>
             </td>
             <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <td style="vertical-align: middle;">8&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">12.13</td>
             <td style="vertical-align: middle;">56.66</td>
@@ -1101,6 +1134,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <td style="vertical-align: middle;">8&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;"><strong>20.66</strong></td>
             <td style="vertical-align: middle;"><strong>70.36</strong></td>
@@ -1125,6 +1159,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <td style="vertical-align: middle;">32&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">5.31</td>
             <td style="vertical-align: middle;">30.10</td>
@@ -1149,6 +1184,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <td style="vertical-align: middle;">16&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">12.72</td>
             <td style="vertical-align: middle;">58.73</td>
@@ -1173,6 +1209,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <td style="vertical-align: middle;">8&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">16.53</td>
             <td style="vertical-align: middle;">62.87</td>
@@ -1197,6 +1234,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <td style="vertical-align: middle;">8&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">56.55</td>
             <td style="vertical-align: middle;">91.64</td>
@@ -1221,6 +1259,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <td style="vertical-align: middle;">8&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;"><strong>70.29</strong></td>
             <td style="vertical-align: middle;"><strong>94.62</strong></td>
@@ -1246,6 +1285,7 @@
               <td style="vertical-align: middle;"></td>
               <td style="vertical-align: middle; width: 30px;"><b>Resize</b></td>
               <td style="vertical-align: middle;">-</td>
+              <td style="vertical-align: middle;">-</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;">95.15</td>
               <td style="vertical-align: middle;">98.39</td>
@@ -1270,6 +1310,7 @@
                   </b>
               </td>
               <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <td style="vertical-align: middle;">16&times</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;">0.76</td>
               <td style="vertical-align: middle;">2.69</td>
@@ -1294,6 +1335,7 @@
                   </b>
               </td>
               <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+              <td style="vertical-align: middle;">16&times</td>
               <!-- <td style="vertical-align: middle;">-</td> -->
               <td style="vertical-align: middle;">3.00</td>
               <td style="vertical-align: middle;">8.22</td>
@@ -1318,6 +1360,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <td style="vertical-align: middle;">16&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">3.30</td>
             <td style="vertical-align: middle;">10.62</td>
@@ -1342,6 +1385,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <td style="vertical-align: middle;">16&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">9.64</td>
             <td style="vertical-align: middle;">30.08</td>
@@ -1360,36 +1404,13 @@
             <td style="vertical-align: middle;"></td>
             <td style="vertical-align: middle; width: 30px;">
                 <b>
-                    <a href="https://github.com/FoundationVision/OmniTokenizer" class="ext-link" style="font-size: 16px; margin-left: 5px;">
-                      OmniTokenizer
-                    </a>
-                </b>
-            </td>
-            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
-            <!-- <td style="vertical-align: middle;">-</td> -->
-            <td style="vertical-align: middle;">14.27</td>
-            <td style="vertical-align: middle;">54.67</td>
-            <td style="vertical-align: middle;">91.49</td>
-            <td style="vertical-align: middle;">53.48</td>
-            <td style="vertical-align: middle;">36.63</td>
-            <td style="vertical-align: middle;">76.92</td>
-            <td style="vertical-align: middle;">96.53</td>
-            <td style="vertical-align: middle;">70.02</td>
-            <td style="vertical-align: middle;">0.40</td>
-            <td style="vertical-align: middle;">0.60</td>
-            <td style="vertical-align: middle;">0.82</td>
-            <td style="vertical-align: middle;">0.61</td>
-          </tr>
-          <tr>
-            <td style="vertical-align: middle;"></td>
-            <td style="vertical-align: middle; width: 30px;">
-                <b>
                     <a href="https://github.com/omerbt/TokenFlow" class="ext-link" style="font-size: 16px; margin-left: 5px;">
                       TokenFlow
                     </a>
                 </b>
             </td>
             <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <td style="vertical-align: middle;">16&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">4.46</td>
             <td style="vertical-align: middle;">14.86</td>
@@ -1408,36 +1429,13 @@
             <td style="vertical-align: middle;"></td>
             <td style="vertical-align: middle; width: 30px;">
                 <b>
-                    <a href="https://github.com/FoundationVision/UniTok" class="ext-link" style="font-size: 16px; margin-left: 5px;">
-                      UniTok
-                    </a>
-                </b>
-            </td>
-            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
-            <!-- <td style="vertical-align: middle;">-</td> -->
-            <td style="vertical-align: middle;">26.90</td>
-            <td style="vertical-align: middle;">47.91</td>
-            <td style="vertical-align: middle;">74.29</td>
-            <td style="vertical-align: middle;">49.70</td>
-            <td style="vertical-align: middle;">54.36</td>
-            <td style="vertical-align: middle;">72.48</td>
-            <td style="vertical-align: middle;">87.93</td>
-            <td style="vertical-align: middle;">71.59</td>
-            <td style="vertical-align: middle;">0.33</td>
-            <td style="vertical-align: middle;">0.50</td>
-            <td style="vertical-align: middle;">0.76</td>
-            <td style="vertical-align: middle;">0.53</td>
-          </tr>
-          <tr>
-            <td style="vertical-align: middle;"></td>
-            <td style="vertical-align: middle; width: 30px;">
-                <b>
                     <a href="https://github.com/TencentARC/SEED-Voken" class="ext-link" style="font-size: 16px; margin-left: 5px;">
                       O-MAGVIT2
                     </a>
                 </b>
             </td>
             <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <td style="vertical-align: middle;">16&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">5.76</td>
             <td style="vertical-align: middle;">20.74</td>
@@ -1462,6 +1460,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <td style="vertical-align: middle;">16&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">9.08</td>
             <td style="vertical-align: middle;">29.35</td>
@@ -1480,12 +1479,63 @@
             <td style="vertical-align: middle;"></td>
             <td style="vertical-align: middle; width: 30px;">
                 <b>
+                    <a href="https://github.com/FoundationVision/UniTok" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      UniTok
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <td style="vertical-align: middle;">16&times</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">26.90</td>
+            <td style="vertical-align: middle;">47.91</td>
+            <td style="vertical-align: middle;">74.29</td>
+            <td style="vertical-align: middle;">49.70</td>
+            <td style="vertical-align: middle;">54.36</td>
+            <td style="vertical-align: middle;">72.48</td>
+            <td style="vertical-align: middle;">87.93</td>
+            <td style="vertical-align: middle;">71.59</td>
+            <td style="vertical-align: middle;">0.33</td>
+            <td style="vertical-align: middle;">0.50</td>
+            <td style="vertical-align: middle;">0.76</td>
+            <td style="vertical-align: middle;">0.53</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
+                    <a href="https://github.com/FoundationVision/OmniTokenizer" class="ext-link" style="font-size: 16px; margin-left: 5px;">
+                      OmniTokenizer
+                    </a>
+                </b>
+            </td>
+            <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <td style="vertical-align: middle;">8&times</td>
+            <!-- <td style="vertical-align: middle;">-</td> -->
+            <td style="vertical-align: middle;">14.27</td>
+            <td style="vertical-align: middle;">54.67</td>
+            <td style="vertical-align: middle;">91.49</td>
+            <td style="vertical-align: middle;">53.48</td>
+            <td style="vertical-align: middle;">36.63</td>
+            <td style="vertical-align: middle;">76.92</td>
+            <td style="vertical-align: middle;">96.53</td>
+            <td style="vertical-align: middle;">70.02</td>
+            <td style="vertical-align: middle;">0.40</td>
+            <td style="vertical-align: middle;">0.60</td>
+            <td style="vertical-align: middle;">0.82</td>
+            <td style="vertical-align: middle;">0.61</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: middle;"></td>
+            <td style="vertical-align: middle; width: 30px;">
+                <b>
                     <a href="https://github.com/FoundationVision/LlamaGen" class="ext-link" style="font-size: 16px; margin-left: 5px;">
                       LlamaGen(F8)
                     </a>
                 </b>
             </td>
             <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <td style="vertical-align: middle;">8&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">25.42</td>
             <td style="vertical-align: middle;">71.63</td>
@@ -1510,6 +1560,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#ed4b82">Discrete</td>
+            <td style="vertical-align: middle;">8&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;"><strong>35.29</strong></td>
             <td style="vertical-align: middle;"><strong>78.91</strong></td>
@@ -1534,6 +1585,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <td style="vertical-align: middle;">32&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">15.32</td>
             <td style="vertical-align: middle;">48.36</td>
@@ -1558,6 +1610,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <td style="vertical-align: middle;">16&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">25.14</td>
             <td style="vertical-align: middle;">69.54</td>
@@ -1582,6 +1635,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <td style="vertical-align: middle;">8&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">31.41</td>
             <td style="vertical-align: middle;">75.83</td>
@@ -1606,6 +1660,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <td style="vertical-align: middle;">8&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;">74.88</td>
             <td style="vertical-align: middle;">95.76</td>
@@ -1630,6 +1685,7 @@
                 </b>
             </td>
             <td style="vertical-align: middle; color:#1a4ebf">Continuous</td>
+            <td style="vertical-align: middle;">8&times</td>
             <!-- <td style="vertical-align: middle;">-</td> -->
             <td style="vertical-align: middle;"><strong>83.71</strong></td>
             <td style="vertical-align: middle;"><strong>96.83</strong></td>
