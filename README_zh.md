@@ -9,7 +9,21 @@
 
 # TokBench: Evaluating Your Visual Tokenizer before Visual Generation
 
-<a href="https://arxiv.org/abs/2505.18142"><img src='https://img.shields.io/badge/arXiv-TokBench-red' alt='Paper PDF'></a> <a href="https://wjf5203.github.io/TokBench/"><img src='https://img.shields.io/badge/Project_Page-TokBench-green' alt='Project Page'></a> <a href="https://huggingface.co/datasets/Junfeng5/TokBench"><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue'></a>
+<div align="center">
+  <a href="https://arxiv.org/abs/2505.18142"><img src='https://img.shields.io/badge/arXiv-TokBench-red' alt='Paper PDF'></a>  &ensp;
+  <a href="https://wjf5203.github.io/TokBench/"><img src='https://img.shields.io/badge/Project_Page-TokBench-green' alt='Project Page'></a>  &ensp;
+  <a href="https://huggingface.co/datasets/Junfeng5/TokBench"><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue'></a>
+</div>
+
+<p align="center">
+    👋 加入我们的群聊讨论更多Tokenzier！ <a href="assets/wechat.jpg" target="_blank">WeChat</a></a> 
+</p>
+<p align="center">
+
+
+-----
+
+
 
 👋 欢迎来到TokBench！TokBench是一个专为视觉 Tokenizer和 VAE 设计的评估基准，关注图像重建中的文字和人脸质量，并提供了富含文字和人脸的图片和视频，这种图像细节决定了视觉生成模型的上限。TokBench对现有的图像和视频 Tokenizers/VAEs进行了广泛的评估，**作为挑选VAE/Tokenizer的指南**，参考项目页面 [project page](https://wjf5203.github.io/TokBench/) 查看更多内容。
 

@@ -8,7 +8,21 @@
 
 # TokBench: Evaluating Your Visual Tokenizer before Visual Generation
 
-<a href="https://arxiv.org/abs/2505.18142"><img src='https://img.shields.io/badge/arXiv-TokBench-red' alt='Paper PDF'></a> <a href="https://wjf5203.github.io/TokBench/"><img src='https://img.shields.io/badge/Project_Page-TokBench-green' alt='Project Page'></a> <a href="https://huggingface.co/datasets/Junfeng5/TokBench"><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue'></a>
+<div align="center">
+  <a href="https://arxiv.org/abs/2505.18142"><img src='https://img.shields.io/badge/arXiv-TokBench-red' alt='Paper PDF'></a>  &ensp;
+  <a href="https://wjf5203.github.io/TokBench/"><img src='https://img.shields.io/badge/Project_Page-TokBench-green' alt='Project Page'></a>  &ensp;
+  <a href="https://huggingface.co/datasets/Junfeng5/TokBench"><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue'></a>
+</div>
+
+<p align="center">
+    👋 Join our <a href="assets/wechat.jpg" target="_blank">WeChat</a></a> 
+</p>
+<p align="center">
+
+
+-----
+
+ 
 
 👋 **Welcome to TokBench** TokBench is an benchmark specifically designed for visual Tokenizers and VAEs, focusing on text and face quality in image reconstruction. It provides a rich collection of text- and face-centric images and videos, as these fine-grained details determine the upper bound of visual generation models. TokBench conducts extensive evaluations of existing image and video Tokenizers/VAEs, **serving as a guide for selecting VAE/Tokenizers**. Refer to the  [project page](https://wjf5203.github.io/TokBench/)  for more details.
 
