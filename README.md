@@ -36,6 +36,8 @@
 
 ## 🔥🔥🔥 News!!
 
+- Jun 4, 2025: Update video set on HuggingFace.
+- Jun 4, 2025: Updated video evaluation scripts and [reconstruction scripts](./tokenzier_vae_scripts/reconstruct.md) for all methods in the paper.
 - May 27, 2025: 🚀 [Arxiv](https://arxiv.org/abs/2505.18142)  technical report and [project page](https://wjf5203.github.io/TokBench/) launched.
 - May 16, 2025: 👋 Open-sourced TokBench [Image-Set]()  and image-level evaluation code.
 
@@ -94,7 +96,8 @@ conda install pytorch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0 -c pytorch -c
 pip install -e .
 pip install nltk
 pip install insightface
-pip install onnxruntime
+pip install onnxruntime-gpu
+pip install imageio[ffmpeg]
 
 # 5. Install CUDNN for insightface model acceleration
 https://developer.nvidia.com/cudnn
@@ -113,16 +116,25 @@ https://github.com/deepinsight/insightface/issues/251
 huggingface-cli download  Junfeng5/TokBench   --repo-type dataset
 
 # 2. reconstruct all images and keep the original folder format like in TokBench 
-bash your_restruction_scripts.sh
+# Here, refer to the reconstruction of resize baseline
+cd tokenzier_vae_scripts/image_scripts
+bash resize.sh
+cd ../..
+
+# cd tokenzier_vae_scripts/video_scripts
+# bash resize.sh
+# cd ../..
+
 
 # 3. Run eval.sh to get the score (T-ACC, T-NED, F-Sim)
-bash eval.sh
+bash image_eval.sh
+# bash video_eval.sh
 
 ```
 
 
 
-
+We provide reconstruction scripts for all tokenizers/VAEs in the paper. If you need to reproduce or refer to them, you can refer to [reconstruction scripts](./tokenzier_vae_scripts/reconstruct.md).
 
 
 

@@ -69,25 +69,35 @@ def get_args_parser():
     parser = argparse.ArgumentParser(' ', add_help=False)
     parser.add_argument('--tokenizer', type=str, default='chameleon')
     parser.add_argument('--setting', type=str, choices=["256","512","1024"], default='256')
+    parser.add_argument("--data_type", type=str, default="image", choices=["image","video"], help=" eval for image or video")
+    parser.add_argument('--output_path', type=str, default='image_outputs')
     return parser
 
 
+
 def summarize_text(args):
-    ans_paths = [
-        'ic13.json',
-        'ic15.json', 
-        'tt.json', 
-        'textocr.json',
-        'sroie.json',
-        'cord.json',
-        'infograph.json',
-        'docvqa.json'
-    ]
-    ans_paths = ['output/'+ans for ans in ans_paths]
+    if args.data_type=='image':
+        ans_paths = [
+            'ic13.json',
+            'ic15.json', 
+            'tt.json', 
+            'textocr.json',
+            'sroie.json',
+            'cord.json',
+            'infograph.json',
+            'docvqa.json'
+        ]
+    elif args.data_type=='video':
+        ans_paths = [
+            'ch3.json',
+            'ds.json', 
+        ]
+    else:
+        raise NotImplementedError("undefined data type")   
+    ans_paths = [args.output_path+'/'+ans for ans in ans_paths]
 
 
-
-    flatten_ans = reset_ans('output/ic13.json')
+    flatten_ans = reset_ans(ans_paths[0])
     print(flatten_ans)
     for path in ans_paths:
         extract_ans(flatten_ans, path)
@@ -101,11 +111,18 @@ def summarize_text(args):
 
     setting = args.setting
 
-    ratio_ranges = {
-        '256':[0.02, 0.03, 0.04, 1],
-        '512':[0.01, 0.02, 0.03, 1],
-        '1024':[0.005, 0.01, 0.02, 1],
-    }
+    
+    if args.data_type=='image':
+        ratio_ranges = {
+            '256':[0.02, 0.03, 0.04, 1],
+            '512':[0.01, 0.02, 0.03, 1],
+            '1024':[0.005, 0.01, 0.02, 1],
+        }
+    else:
+        ratio_ranges = {
+        '256':[0.01, 0.02, 0.03, 1],
+        '480':[0.005, 0.01, 0.02, 1],
+        }
     ratio_range = ratio_ranges[setting]
 
     len_range = len(ratio_range) - 1
@@ -117,9 +134,9 @@ def summarize_text(args):
     # print(range_lists)
 
     tb_split = ['Method', 'Setting']
-    tb_split.extend(['a' + repr(v).replace(" ", "") for v in range_lists])
+    tb_split.extend(['ACC' + repr(v).replace(" ", "") for v in range_lists])
     tb_split.append('mean_acc')
-    tb_split.extend(['n' + repr(v).replace(" ", "") for v in range_lists])
+    tb_split.extend(['NED' + repr(v).replace(" ", "") for v in range_lists])
     tb_split.append('mean_ned')
     tb = PrettyTable(tb_split)
 
@@ -161,7 +178,8 @@ def summarize_text(args):
             
 def summarize_face(args):
     ans_paths = [
-    'output/face.json']
+    args.output_path+'/face.json']
+
     flatten_ans = reset_ans(ans_paths[0])
     for path in ans_paths:
         extract_ans(flatten_ans, path)
@@ -174,11 +192,20 @@ def summarize_face(args):
 
     setting = args.setting
 
-    ratio_ranges = {
-        '256':[0.1, 0.2, 0.3, 1],
-        '512':[0.05, 0.10, 0.2, 1],
-        '1024':[0.02, 0.05, 0.1, 1],
-    }
+
+    if args.data_type=='image':
+        ratio_ranges = {
+            '256':[0.1, 0.2, 0.3, 1],
+            '512':[0.05, 0.10, 0.2, 1],
+            '1024':[0.02, 0.05, 0.1, 1],
+        }
+    else:
+        ratio_ranges = {
+        '256':[0.05, 0.10, 0.2, 1],
+        '480':[0.02, 0.05, 0.1, 1],
+        }
+    
+
     ratio_range = ratio_ranges[setting]
 
     len_range = len(ratio_range) - 1
@@ -215,7 +242,7 @@ def summarize_face(args):
         similarity_res = [np.mean(x) for x in curve_dict['similarity']]
         similarity_res.append(np.mean(similarity_res))
 
-        similarity_res = [   f"{x:.2%}"  for x in similarity_res]
+        similarity_res = [   f"{x:.2f}"  for x in similarity_res]
 
         show_row.extend(similarity_res)
 

@@ -210,6 +210,28 @@ def crop_bboxes_from_image(img_path: str | Path, geoms: np.ndarray) -> list[np.n
         return extract_crops(img, geoms.astype(dtype=int))
     raise ValueError("Invalid geometry format")
 
+def crop_bboxes_from_frame(img: np.ndarray, geoms: np.ndarray, path=None) -> list[np.ndarray]:
+    """Crop a set of bounding boxes from an image
+
+    Args:
+        img_path: path to the image
+        geoms: a array of polygons of shape (N, 4, 2) or of straight boxes of shape (N, 4)
+
+    Returns:
+        a list of cropped images
+    """
+    # with Image.open(img_path) as pil_img:
+    # img: np.ndarray = np.array(pil_img.convert("RGB"))
+    if img.shape[0] == 0 or img.shape[1] == 0:
+        print(img.shape)
+        print(path)
+    # Polygon
+    if geoms.ndim == 3 and geoms.shape[1:] == (4, 2):
+        return extract_rcrops(img, geoms.astype(dtype=int))
+    if geoms.ndim == 2 and geoms.shape[1] == 4:
+        return extract_crops(img, geoms.astype(dtype=int))
+    raise ValueError("Invalid geometry format")
+
 
 def pre_transform_multiclass(img, target: tuple[np.ndarray, list]) -> tuple[np.ndarray, dict[str, list]]:
     """Converts multiclass target to relative coordinates.

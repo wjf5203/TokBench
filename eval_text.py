@@ -18,7 +18,7 @@ else:
 
 from doctr import datasets
 from doctr import transforms as T
-from doctr.datasets import VOCABS, OCRJSONForTokBench
+from doctr.datasets import VOCABS, OCRJSONForTokBench, VideoOCRJSONForTokBench
 from doctr.models import recognition
 from doctr.utils.metrics import TextMatch, RecMetric, RecMetricWithDetails
 
@@ -125,7 +125,11 @@ def main(args):
     
 
     # ds = datasets.OCRJSON(
-    ds=OCRJSONForTokBench(
+    Dataset_type={
+        "image":OCRJSONForTokBench,
+        "video":VideoOCRJSONForTokBench
+    }
+    ds=Dataset_type[args.data_type](
         img_folder=args.img_folder,  # "/path/to/dataset/ocr/spotting/ic13/test_images",
         label_path=args.gt_path,
         dataset_name=args.dataset,
@@ -258,7 +262,7 @@ def main(args):
                 )
             )
 
- 
+
 
     pred_cnt = 0
     # save_anno_in_log = True
@@ -295,6 +299,10 @@ def main(args):
                     width=img_meta["width"],
                     annotations=[]
                 )
+                if args.data_type ==- "video":
+                    temp_ans[img_meta["file_name"]].update( {
+                        "video_name":img_meta["video_name"],
+                         "frame_id":img_meta["frame_id"]} )
             if exact_match_per == 1:
                 temp_ans[img_meta["file_name"]]["annotations"].append(gt_anno)
             # else:
@@ -338,6 +346,7 @@ def parse_args():
     parser.add_argument("--gt_path", type=str, default="/path/to/dataset/ocr/bench/gt/Challenge2_Test_Task1_GT",
                         help="The GT folder of test images")
     parser.add_argument("--method_name", type=str, default="tokenizer1", help="The reconstruction method name")
+    parser.add_argument("--data_type", type=str, default="image", choices=["image","video"], help=" eval for image or video")
     parser.add_argument("--setting", type=str, default="256", choices=["256","512","1024"], help="The evaluation setting [256,512,1024]")
     parser.add_argument("--gt_prefix", type=bool, default=False, help="Whether add prefix to GT's filenames")
     parser.add_argument("--replace", type=bool, default=False, help="Replace .jpg.jpg in filenames")

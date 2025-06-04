@@ -13,15 +13,17 @@ import json
 import os
 import argparse
 from tqdm import tqdm
+import imageio
 
 
 
 def get_args_parser():
     parser = argparse.ArgumentParser('Set ', add_help=False)
-    parser.add_argument('--original_image_path', type=str, default='/data3/jfwu/SSD/face_data/WFLW_images_all')
-    parser.add_argument('--reconstruction_image_path', type=str, default='/data3/jfwu/RecBench/results_face/chameleon/face_256/')
+    parser.add_argument('--original_image_path', type=str, default='path/to/TokBench/images/face_data/')
+    parser.add_argument('--reconstruction_image_path', type=str, default='path/to/reconsturctions/face_data/chameleon/face_256/')
     parser.add_argument('--tokenizer', type=str, default='chameleon')
-    parser.add_argument('--setting', type=str, choices=["256","512","1024"], default='256')
+    parser.add_argument('--setting', type=str, choices=["256","512","1024" "480"], default='256')
+    parser.add_argument("--data_type", type=str, default="image", choices=["image","video"], help=" eval for image or video")
     parser.add_argument('--meta_path', type=str, default='face_meta.json')
     parser.add_argument('--save_dir', type=str, default='output')
     return parser
@@ -35,29 +37,63 @@ def main(args):
 
     eval_results = {}
     all_similarity = []
-    for image_meta in tqdm(all_images):
-        image_path = image_meta['image_name']
-        img_ori = cv2.imread(os.path.join(args.original_image_path,image_path))
-        img_rec = cv2.imread(os.path.join(args.reconstruction_image_path,image_path))
-        eval_results[image_path]={
-            "file_name": image_path,
-            "height": image_meta['img_height'],
-            "width": image_meta['img_width'],
-            "avg_acc": None,
-            "avg_ned": None,
-            "results": []
-            }
-        for face in image_meta['faces']:
-            face_input = insightface.app.common.Face(kps=np.array(face['kps']))
-            embed1 = app.models['recognition'].get(img_ori, face_input)
-            embed2 = app.models['recognition'].get(img_rec, face_input)
-            similarity = np.dot(embed1, embed2) / (np.linalg.norm(embed1) * np.linalg.norm(embed2))
-            all_similarity.append(similarity)
-            eval_results[image_path]["results"].append( {"ratio":face["ratio"], 
-                                                         "similarity":float(similarity),
-                                                         "box":face["box"],
-                                                         "gt":face["gt"],
-                                                           } )
+    if args.data_type == "image":
+        for image_meta in tqdm(all_images):
+            image_path = image_meta['image_name']
+            img_ori = cv2.imread(os.path.join(args.original_image_path,image_path))
+            img_rec = cv2.imread(os.path.join(args.reconstruction_image_path,image_path))
+            eval_results[image_path]={
+                "file_name": image_path,
+                "height": image_meta['img_height'],
+                "width": image_meta['img_width'],
+                "results": []
+                }
+            for face in image_meta['faces']:
+                face_input = insightface.app.common.Face(kps=np.array(face['kps']))
+                embed1 = app.models['recognition'].get(img_ori, face_input)
+                embed2 = app.models['recognition'].get(img_rec, face_input)
+                similarity = np.dot(embed1, embed2) / (np.linalg.norm(embed1) * np.linalg.norm(embed2))
+                all_similarity.append(similarity)
+                eval_results[image_path]["results"].append( {"ratio":face["ratio"], 
+                                                            "similarity":float(similarity),
+                                                            "box":face["box"],
+                                                            "gt":face["gt"],
+                                                            } )
+    elif args.data_type == "video":
+        for image_meta in tqdm(all_images):
+            image_path = image_meta['video_name']
+            video_reader = imageio.get_reader(os.path.join(args.original_image_path,image_path), "ffmpeg")
+            ori_frames = [ frame for frame in video_reader]
+            video_reader.close()
+
+            video_reader = imageio.get_reader(os.path.join(args.reconstruction_image_path,image_path), "ffmpeg")
+            rec_frames = [ frame for frame in video_reader]
+            video_reader.close()
+
+            assert len(ori_frames)==len(rec_frames)
+            eval_results[image_path]={
+                "file_name": image_path,
+                "height": image_meta['video_height'],
+                "width": image_meta['video_width'],
+                "results": []
+                }
+            
+            
+            for frame_results, oriframe, recframe in zip(image_meta['frame_anns'],ori_frames,rec_frames):
+                for face in frame_results:
+                    face_input = insightface.app.common.Face(kps=np.array(face['kps']))
+                    img_ori = oriframe[:,:,::-1]
+                    img_rec = recframe[:,:,::-1]
+                    embed1 = app.models['recognition'].get(img_ori, face_input)
+                    embed2 = app.models['recognition'].get(img_rec, face_input)
+                    distance = np.dot(embed1, embed2) / (np.linalg.norm(embed1) * np.linalg.norm(embed2))
+                    all_similarity.append(distance)
+                    eval_results[image_path]["results"].append( {"ratio":face["ratio"], 
+                                                                "similarity":float(distance),
+                                                                } )
+    else:
+        raise NotImplementedError("undefined data type")   
+    
     mean_similarity = np.mean(all_similarity)
     mean_similarity = float(mean_similarity)
     
