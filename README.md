@@ -102,8 +102,8 @@ pip install imageio[ffmpeg]
 # 5. Install CUDNN for insightface model acceleration
 https://developer.nvidia.com/cudnn
 
-# 6. download antelopev2 model for face evaluation following 
-https://github.com/deepinsight/insightface/issues/251
+# 6. auto-download antelopev2 model and move the ckpts for face evaluation following 
+[https://github.com/deepinsight/insightface/issues/251](https://github.com/deepinsight/insightface/issues/2766)
 
 ```
 
