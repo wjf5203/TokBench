@@ -8,6 +8,10 @@
 
 # TokBench: Evaluating Your Visual Tokenizer before Visual Generation
 
+<p align="center">
+  <strong>ACM MM 2026 · Dataset Track · Oral Presentation</strong>
+</p>
+
 <div align="center">
   <a href="https://arxiv.org/abs/2505.18142"><img src='https://img.shields.io/badge/arXiv-TokBench-red' alt='Paper PDF'></a>  &ensp;
   <a href="https://wjf5203.github.io/TokBench/"><img src='https://img.shields.io/badge/Project_Page-TokBench-green' alt='Project Page'></a>  &ensp;
@@ -36,6 +40,7 @@
 
 ## 🔥🔥🔥 News!!
 
+- **2026:** 🎉 TokBench has been accepted to the **Dataset Track at ACM MM 2026** for an **oral presentation**!
 - Jun 4, 2025: Update video set on HuggingFace.
 - Jun 4, 2025: Updated video evaluation scripts and [reconstruction scripts](./tokenzier_vae_scripts/reconstruct.md) for all methods in the paper.
 - May 27, 2025: 🚀 [Arxiv](https://arxiv.org/abs/2505.18142)  technical report and [project page](https://wjf5203.github.io/TokBench/) launched.
@@ -151,4 +156,3 @@ If you find [TokBench](https://arxiv.org/abs/2505.18142) useful for your researc
     year={2025}
   }  
 ```
-

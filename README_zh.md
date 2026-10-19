@@ -9,6 +9,10 @@
 
 # TokBench: Evaluating Your Visual Tokenizer before Visual Generation
 
+<p align="center">
+  <strong>ACM MM 2026 · Dataset Track · Oral Presentation（口头报告）</strong>
+</p>
+
 <div align="center">
   <a href="https://arxiv.org/abs/2505.18142"><img src='https://img.shields.io/badge/arXiv-TokBench-red' alt='Paper PDF'></a>  &ensp;
   <a href="https://wjf5203.github.io/TokBench/"><img src='https://img.shields.io/badge/Project_Page-TokBench-green' alt='Project Page'></a>  &ensp;
@@ -37,6 +41,7 @@
 
 ## 🔥🔥🔥 更新!!
 
+* **2026年：** 🎉 TokBench 被 **ACM MM 2026 Dataset Track** 接收，并获选为 **Oral Presentation（口头报告）**！
 * 2025年6月4日: 上传 video set 到HuggingFace。
 * 2025年6月4日: 更新video重建评估，和所有论文中方法的 [重建脚本](./tokenzier_vae_scripts/reconstruct.md)。
 * 2025年5月27日: 🚀 [Arxiv](https://arxiv.org/abs/2505.18142) 技术报告和[主页](https://wjf5203.github.io/TokBench/)上线。
@@ -153,4 +158,3 @@ bash image_eval.sh
     year={2025}
   }  
 ```
-
